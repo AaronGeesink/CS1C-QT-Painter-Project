@@ -30,6 +30,7 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
+        shapes.h \
         vector.h
 
 FORMS += \
