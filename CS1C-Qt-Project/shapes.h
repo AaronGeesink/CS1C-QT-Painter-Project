@@ -3,7 +3,10 @@
 
 //#include <QApplication>
 #include <QPainter>
-using namespace Qt;
+
+#include "vector.h"
+
+using namespace std;
 
 namespace Shapes {
 
@@ -21,8 +24,8 @@ public:
 	const QBrush& getBrush() const;
 
 	void setShape(ShapeType shape);
-	void setPen (GlobalColor, int width, PenStyle, PenCapStyle, PenJoinStyle);
-	void setPen(GlobalColor, BrushStyle);
+	void setPen (Qt::GlobalColor, int width, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle);
+	void setPen(Qt::GlobalColor, Qt::BrushStyle);
 
 	void defaultStyle();
 	void drawRectangle(int width, int height);
@@ -65,6 +68,8 @@ public:
 	void setPoint(const QPoint& point);
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
+private:
+	vector<QPoint> points;
 };
 
 
@@ -78,6 +83,9 @@ public:
 	void setPoint(const QPoint& point);
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
+
+private:
+	vector<QPoint> points;
 };
 
 } // end of Shapes namespace
