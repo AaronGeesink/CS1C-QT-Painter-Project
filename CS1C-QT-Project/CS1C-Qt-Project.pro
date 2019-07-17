@@ -27,12 +27,10 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        renderarea.cpp \
         shapes.cpp
 
 HEADERS += \
         mainwindow.h \
-        renderarea.h \
         shapes.h \
         vector.h
 

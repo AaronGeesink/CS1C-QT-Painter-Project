@@ -95,6 +95,7 @@ private:
 
 class Rectangle : public Shape
 {
+public:
 	Rectangle(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Rectangle} {}
 	~Rectangle() override {}
 
@@ -107,6 +108,7 @@ private:
 
 class Ellipse : public Shape
 {
+public:
 	Ellipse(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Ellipse} {}
 	~Ellipse() override {}
 
@@ -119,6 +121,7 @@ private:
 
 class Text : public Shape
 {
+public:
 	Text(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Text} {}
 	~Text() override {}
 

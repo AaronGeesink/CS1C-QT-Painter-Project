@@ -4,8 +4,10 @@
 // vector.h - class specification
 // a vector which approximates the stl vector
 
+#include <algorithm>
 using std::move;
 using std::swap;
+using std::exit;
 
 namespace project
 {
