@@ -3,10 +3,9 @@
 
 //#include <QApplication>
 #include <QPainter>
-
 #include "vector.h"
 
-using namespace std;
+using std::string;
 
 namespace Shapes {
 
@@ -24,8 +23,9 @@ public:
 	const QBrush& getBrush() const;
 
 	void setShape(ShapeType shape);
-	void setPen (Qt::GlobalColor, int width, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle);
-	void setBrush(Qt::GlobalColor, Qt::BrushStyle);
+	void setPen (Qt::GlobalColor color, int width, Qt::PenStyle style, Qt::PenCapStyle cap, Qt::PenJoinStyle join);
+	void setPenColor(Qt::GlobalColor color);
+	void setBrush(Qt::GlobalColor color, Qt::BrushStyle style);
 
 	void defaultStyle();
 	void drawRectangle(int width, int height);
@@ -55,6 +55,10 @@ public:
 	void setPoints(const QPoint& pointBegin, const QPoint& pointEnd);
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
+
+private:
+	QPoint pointBegin;
+	QPoint pointEnd;
 };
 
 
@@ -68,10 +72,10 @@ public:
 	void setPoint(const QPoint& point);
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
+
 private:
 	vector<QPoint> points;
 };
-
 
 
 class Polygon : public Shape
@@ -96,6 +100,8 @@ class Rectangle : public Shape
 	void setRectangle(const QRect& rect);
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
+private:
+	QRect rect;
 };
 
 class Ellipse : public Shape
@@ -106,6 +112,8 @@ class Ellipse : public Shape
 	void setEllipse(const QRect& rect);
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
+private:
+	QRect rect;
 };
 
 class Text : public Shape
@@ -113,10 +121,18 @@ class Text : public Shape
 	Text(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Text} {}
 	~Text() override {}
 
-	void setText(const QString &text);
-	void setFont(const QFont &font);
+	void setText(const QRect& rect, const QString& text);
+	void setFont(const QString& family, QFont::Weight weight, QFont::Style style, int size, Qt::AlignmentFlag alignment);
+	void setFont(const QString& family);
+	void setString(const QString& text);
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
+
+private:
+	QFont font;
+	QString text;
+	QRect rect;
+	Qt::AlignmentFlag alignment;
 };
 
 } // end of Shapes namespace
