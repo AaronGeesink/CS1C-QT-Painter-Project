@@ -127,7 +127,7 @@ void Polygon::draw(const int translateX, const int translateY)
 	getQPainter().save();
 	getQPainter().translate(translateX, translateY);
 
-	getQPainter().drawPolyline(points.begin(), points.size());
+	getQPainter().drawPolygon(points.begin(), points.size());
 
 	getQPainter().restore();
 }
