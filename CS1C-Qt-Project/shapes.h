@@ -6,6 +6,7 @@
 #include "vector.h"
 
 using std::string;
+using namespace project;
 
 namespace Shapes {
 
@@ -74,7 +75,7 @@ public:
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
-	vector<QPoint> points;
+	project::vector<QPoint> points;
 };
 
 
@@ -89,7 +90,7 @@ public:
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
-	vector<QPoint> points;
+	project::vector<QPoint> points;
 };
 
 class Rectangle : public Shape

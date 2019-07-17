@@ -4,8 +4,11 @@
 // vector.h - class specification
 // a vector which approximates the stl vector
 
-#include <algorithm>
-using namespace std;
+using std::move;
+using std::swap;
+
+namespace project
+{
 
 template<class T>
 class vector
@@ -257,5 +260,7 @@ inline typename vector<T>::iterator vector<T>::erase(iterator p)
 
     return p;
 }
+
+} // End of Vector namespace
 
 #endif // VECTOR_H
