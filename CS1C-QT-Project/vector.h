@@ -4,6 +4,9 @@
 // vector.h - class specification
 // a vector which approximates the stl vector
 
+#include <algorithm>
+using namespace std;
+
 template<class T>
 class vector
 {
@@ -32,7 +35,7 @@ public:
     void reserve(int newalloc); // get more space
 
     using iterator = T * ;
-    using const_iterator = const T*;
+    using const_iterator = const T *;
     iterator begin(); // points to first element
     const_iterator begin() const;
     iterator end(); // points to one beyond the last element
@@ -68,14 +71,16 @@ inline vector<T> & vector<T>::operator=(const vector & source)
 {
     space = source.space;
     size_v = source.size_v;
-    delete[] elem;
-    elem = new T[space];
+    T * pT = new T[space];
 
     // Copy over values
     for (int i = 0; i < source.size_v; i++)
     {
         elem[i] = source.elem[i];
     }
+    delete[] elem;
+    elem = pT;
+
     return *this;
 }
 
@@ -111,11 +116,11 @@ inline vector<T>::~vector()
 }
 
 /*
-NOT DONE (access return reference)
+// NOT DONE (access return reference)
 template<class T>
 inline T & vector<T>::operator[](int n)
 {
-
+    // TODO: insert return statement here
 }
 */
 
@@ -135,6 +140,9 @@ inline int vector<T>::capacity() const
 template<class T>
 inline void vector<T>::resize(int newsize)
 {
+    if (newsize == 0)
+        newsize = 1;
+
     T * Tptr = new T[newsize];
 
     if (newsize < size_v)
@@ -143,13 +151,10 @@ inline void vector<T>::resize(int newsize)
     for (int i = 0; i < newsize; i++)
         Tptr[i] = elem[i];
 
+    space = newsize;
+
     delete[] elem;
-
-    T * temp = elem;
-    elem = Tptr;
-    Tptr = temp;
-
-    delete [] Tptr;
+    swap(elem, Tptr);
 }
 
 template<class T>
@@ -182,6 +187,75 @@ inline void vector<T>::reserve(int newalloc)
         Tptr = temp;
         delete[] Tptr;
     }
+}
+
+template<class T>
+inline typename vector<T>::iterator vector<T>::begin()
+{
+    return elem;
+}
+
+template<class T>
+inline typename vector<T>::const_iterator vector<T>::begin() const
+{
+    return elem;
+}
+
+template<class T>
+inline typename vector<T>::iterator vector<T>::end()
+{
+    return &elem[size_v];
+}
+
+template<class T>
+inline typename vector<T>::const_iterator vector<T>::end() const
+{
+    return &elem[size_v];
+}
+
+template<class T>
+inline typename vector<T>::iterator vector<T>::insert(iterator p, const T & v)
+{
+    // Check if p excedes the end of the vector
+    if (p > end() || p < begin())
+    {
+        exit(1);
+    }
+
+    // Increase size of vector if needed
+    if (size_v == space)
+    {
+        resize(space * 2);
+    }
+
+    // Add value to the vector
+    move(p, end(), p + 1);
+
+    *p = v;
+    size_v++;
+
+    return p;
+}
+
+// This function results in a memory leak. must delete the end pointer after moveing all elements.
+template<class T>
+inline typename vector<T>::iterator vector<T>::erase(iterator p)
+{
+    // Check if p excedes the end of the vector
+    if (p >= end() || p < begin())
+    {
+        exit(1);
+    }
+
+    // Move values
+
+    move(p + 1, end(), p);
+    size_v--;
+
+    //delete end(); // This line might cause a memory leak
+
+
+    return p;
 }
 
 #endif // VECTOR_H
