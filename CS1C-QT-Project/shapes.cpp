@@ -54,13 +54,26 @@ void Shape::setBrush(Qt::GlobalColor color, Qt::BrushStyle style)
 	brush.setStyle(style);
 }
 
-void Shapes::Shape::defaultStyle()
+void Shape::defaultStyle()
 {
+	pen.setColor(Qt::black);
+	pen.setWidth(1);
+	pen.setStyle(Qt::SolidLine);
+	pen.setCapStyle(Qt::SquareCap);
+	pen.setJoinStyle(Qt::BevelJoin);
+	brush.setStyle(Qt::NoBrush);
+	brush.setColor(Qt::black);
+
+	getQPainter().setPen(getPen());
+	getQPainter().setBrush(getBrush());
+	getQPainter().save();
 }
 
 void Shape::drawRectangle(int width, int height)
 {
 	qpainter.drawRect(QRect(0,0,width,height));
+	getQPainter().restore();
+
 }
 
 void Line::setPoints(const QPoint & pointBegin, const QPoint & pointEnd)
@@ -114,7 +127,7 @@ void Polygon::draw(const int translateX, const int translateY)
 	getQPainter().save();
 	getQPainter().translate(translateX, translateY);
 
-	getQPainter().drawPolyline(points.begin(), points.size());
+	getQPainter().drawPolygon(points.begin(), points.size());
 
 	getQPainter().restore();
 }
@@ -150,7 +163,7 @@ void Ellipse::draw(const int translateX, const int translateY)
 	getQPainter().save();
 	getQPainter().translate(translateX, translateY);
 
-	getQPainter().drawRect(rect);
+	getQPainter().drawEllipse(rect);
 
 	getQPainter().restore();
 }

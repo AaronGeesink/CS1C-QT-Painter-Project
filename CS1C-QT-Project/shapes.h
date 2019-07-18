@@ -6,6 +6,7 @@
 #include "vector.h"
 
 using std::string;
+using namespace project;
 
 namespace Shapes {
 
@@ -74,7 +75,7 @@ public:
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
-	vector<QPoint> points;
+	project::vector<QPoint> points;
 };
 
 
@@ -89,11 +90,12 @@ public:
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
-	vector<QPoint> points;
+	project::vector<QPoint> points;
 };
 
 class Rectangle : public Shape
 {
+public:
 	Rectangle(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Rectangle} {}
 	~Rectangle() override {}
 
@@ -106,6 +108,7 @@ private:
 
 class Ellipse : public Shape
 {
+public:
 	Ellipse(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Ellipse} {}
 	~Ellipse() override {}
 
@@ -118,6 +121,7 @@ private:
 
 class Text : public Shape
 {
+public:
 	Text(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Text} {}
 	~Text() override {}
 
