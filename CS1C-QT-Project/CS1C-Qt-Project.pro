@@ -25,16 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        contact.cpp \
+        login.cpp \
         main.cpp \
         mainwindow.cpp \
         shapes.cpp
 
 HEADERS += \
+        contact.h \
+        login.h \
         mainwindow.h \
         shapes.h \
         vector.h
 
 FORMS += \
+        contact.ui \
+        login.ui \
         mainwindow.ui
 
 # Default rules for deployment.

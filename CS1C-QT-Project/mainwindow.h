@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
+#include "contact.h"
+#include "login.h"
 
 namespace Ui {
 class MainWindow;
@@ -13,14 +16,22 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
 
+    void update();
 protected:
 	void paintEvent(QPaintEvent *) override;
 
+private slots:
+    void on_pushButton_contact_clicked();
+
+    void on_pushButton_login_clicked();
+
 private:
     Ui::MainWindow *ui;
-
+    contact *contact;
+    login *login;
+    QTimer* m_timer;
 };
 
 #endif // MAINWINDOW_H
