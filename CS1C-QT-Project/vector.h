@@ -23,10 +23,8 @@ public:
     vector(const vector&&source); // move constructor
     vector& operator=(const vector&& source); // move assignment
     ~vector(); // destructor
-    // T& operator[] (int n); // access: return reference
-
-    //next function seems deprecated. will ask Kath about it.
-    // const T& operator[] (int n); // access: return reference
+    T& operator[] (int n); // access: return reference
+    const T& operator[] (int n) const; // access: const return reference
 
     int size() const; // the current size
     int capacity() const; // current available space
@@ -115,14 +113,19 @@ inline vector<T>::~vector()
     delete [] elem;
 }
 
-/*
-// NOT DONE (access return reference)
+// Access return reference
 template<class T>
 inline T & vector<T>::operator[](int n)
 {
-    // TODO: insert return statement here
+    return elem[n];
 }
-*/
+
+// Const access return reference
+template<class T>
+inline const T & vector<T>::operator[](int n) const
+{
+    return elem[n];
+}
 
 template<class T>
 inline int vector<T>::size() const
@@ -192,24 +195,32 @@ inline void vector<T>::reserve(int newalloc)
 template<class T>
 inline typename vector<T>::iterator vector<T>::begin()
 {
-    return elem;
+    if (size_v == 0)
+        return nullptr;
+    return &elem[0];
 }
 
 template<class T>
 inline typename vector<T>::const_iterator vector<T>::begin() const
 {
-    return elem;
+    if (size_v == 0)
+        return nullptr;
+    return &elem[0];
 }
 
 template<class T>
 inline typename vector<T>::iterator vector<T>::end()
 {
+    if (size_v == 0)
+        return nullptr;
     return &elem[size_v];
 }
 
 template<class T>
 inline typename vector<T>::const_iterator vector<T>::end() const
 {
+    if (size_v == 0)
+        return nullptr;
     return &elem[size_v];
 }
 
@@ -229,15 +240,14 @@ inline typename vector<T>::iterator vector<T>::insert(iterator p, const T & v)
     }
 
     // Add value to the vector
-    move(p, end(), p + 1);
-
+    move(p, end(), p + 1)
     *p = v;
     size_v++;
 
     return p;
 }
 
-// This function results in a memory leak. must delete the end pointer after moveing all elements.
+// This function results in a memory leak. must delete the end pointer after moving all elements.
 template<class T>
 inline typename vector<T>::iterator vector<T>::erase(iterator p)
 {
@@ -248,11 +258,10 @@ inline typename vector<T>::iterator vector<T>::erase(iterator p)
     }
 
     // Move values
-
     move(p + 1, end(), p);
     size_v--;
 
-    //delete end(); // This line might cause a memory leak
+    //delete end(); // This line won't work
 
 
     return p;
