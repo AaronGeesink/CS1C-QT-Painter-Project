@@ -5,6 +5,7 @@
 #include <QTimer>
 #include "contact.h"
 #include "login.h"
+#include "canvas.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,10 +18,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
-
     void update();
-protected:
-	void paintEvent(QPaintEvent *) override;
 
 private slots:
     void on_pushButton_contact_clicked();

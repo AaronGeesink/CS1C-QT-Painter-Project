@@ -25,20 +25,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        canvas.cpp \
         contact.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
-        shapes.cpp
+        shapes.cpp \
+        shapesparser.cpp
 
 HEADERS += \
+        canvas.h \
         contact.h \
         login.h \
         mainwindow.h \
         shapes.h \
+        shapesparser.h \
         vector.h
 
 FORMS += \
+        canvas.ui \
         contact.ui \
         login.ui \
         mainwindow.ui
@@ -47,3 +52,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    shapes.txt
