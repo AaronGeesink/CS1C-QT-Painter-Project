@@ -27,9 +27,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    contact *contact;
-    login *login;
+	contact* contact;
+	login* login;
     QTimer* m_timer;
+	canvas* canvas;
 };
 
 #endif // MAINWINDOW_H

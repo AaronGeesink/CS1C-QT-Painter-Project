@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "shapes.h"
+#include "canvas.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     contact = new class contact(this);
     login = new class login(this);
+
     ui->statusBar->showMessage("Logged in as Guest");
     m_timer = new QTimer(this);
     connect (m_timer,&QTimer::timeout,this,&MainWindow::update);

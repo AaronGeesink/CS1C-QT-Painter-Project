@@ -26,7 +26,14 @@ public:
 	void setShape(ShapeType shape);
 	void setPen (Qt::GlobalColor color, int width, Qt::PenStyle style, Qt::PenCapStyle cap, Qt::PenJoinStyle join);
 	void setPenColor(Qt::GlobalColor color);
+	void setPenWidth(int width);
+	void setPenStyle(Qt::PenStyle style);
+	void setPenCapStyle(Qt::PenCapStyle cap);
+	void setPenJoinStyle(Qt::PenJoinStyle join);
+
 	void setBrush(Qt::GlobalColor color, Qt::BrushStyle style);
+	void setBrushColor(Qt::GlobalColor color);
+	void setBrushStyle(Qt::BrushStyle style);
 
 	void defaultStyle();
 	void drawRectangle(int width, int height);
@@ -75,7 +82,7 @@ public:
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
-	project::vector<QPoint> points;
+	vector<QPoint> points;
 };
 
 

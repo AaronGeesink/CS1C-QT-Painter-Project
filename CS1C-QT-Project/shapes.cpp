@@ -48,9 +48,39 @@ void Shape::setPenColor(Qt::GlobalColor color)
 	pen.setColor(color);
 }
 
+void Shape::setPenWidth(int width)
+{
+	pen.setWidth(width);
+}
+
+void Shape::setPenStyle(Qt::PenStyle style)
+{
+	pen.setStyle(style);
+}
+
+void Shape::setPenCapStyle(Qt::PenCapStyle cap)
+{
+	pen.setCapStyle(cap);
+}
+
+void Shape::setPenJoinStyle(Qt::PenJoinStyle join)
+{
+	pen.setJoinStyle(join);
+}
+
 void Shape::setBrush(Qt::GlobalColor color, Qt::BrushStyle style)
 {
 	brush.setColor(color);
+	brush.setStyle(style);
+}
+
+void Shape::setBrushColor(Qt::GlobalColor color)
+{
+	brush.setColor(color);
+}
+
+void Shape::setBrushStyle(Qt::BrushStyle style)
+{
 	brush.setStyle(style);
 }
 
@@ -72,7 +102,7 @@ void Shape::defaultStyle()
 void Shape::drawRectangle(int width, int height)
 {
 	qpainter.drawRect(QRect(0,0,width,height));
-	getQPainter().restore();
+	qpainter.restore();
 
 }
 

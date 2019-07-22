@@ -7,6 +7,7 @@ canvas::canvas(QWidget *parent) :
 	ui(new Ui::canvas)
 {
 	ui->setupUi(this);
+	readFile = false;
 }
 
 canvas::~canvas()
@@ -16,80 +17,86 @@ canvas::~canvas()
 
 void canvas::paintEvent(QPaintEvent *)
 {
-	/*
-	for (int i = 0; i < shapesData.size(); i++)
-	{
-		shapesData[i]->draw(0,0);
-	}
-	*/
-	ShapesParser parser;
-	parser.readShapesFile();
+	//if (readFile)
+	//{
+		ShapesParser parser;
+		parser.readShapesFile(this);
+		readFile = false;
+		//this->update();
+	//}
 
-	Shapes::Line line(this);
-
-	line.setPoints(QPoint(20, 90), QPoint(100, 20));
-
-	line.setPen(Qt::blue, 2, Qt::DashDotLine, Qt::FlatCap, Qt::MiterJoin);
-
-	line.draw();
-
-	line.defaultStyle();
-	line.drawRectangle(width() - 1, height() - 1);
+//	for (int i = 0; i < shapesData.size(); i++)
+//	{
+//		shapesData[i]->draw(0,0);
+//	}
 
 
 
-	Shapes::Polyline polyline(this);
+//	Shapes::Line line(this);
 
-	polyline.setPoint(QPoint(460,90));
-	polyline.setPoint(QPoint(470,20));
-	polyline.setPoint(QPoint(530,40));
-	polyline.setPoint(QPoint(540,80));
+//	line.setPoints(QPoint(20, 90), QPoint( 100, 20));
 
-	polyline.setPen(Qt::green, 6, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin);
+//	line.setPen(Qt::blue, 2, Qt::DashDotLine, Qt::FlatCap, Qt::MiterJoin);
 
-	polyline.draw();
+//	line.draw();
 
-	polyline.defaultStyle();
-	polyline.drawRectangle(width() - 1, height() - 1);
+//	line.defaultStyle();
+//	line.drawRectangle(width() - 1, height() - 1);
 
-	Shapes::Polygon polygon(this);
 
-	polygon.setPoint(QPoint(900,90));
-	polygon.setPoint(QPoint(910,20));
-	polygon.setPoint(QPoint(970,40));
-	polygon.setPoint(QPoint(980,80));
 
-	polygon.setPen(Qt::cyan, 6, Qt::DashDotDotLine, Qt::FlatCap, Qt::MiterJoin);
-	polygon.setBrush(Qt::yellow, Qt::SolidPattern);
+//	Shapes::Polyline polyline(this);
 
-	polygon.draw();
+//	polyline.setPoint(QPoint(460,90));
+//	polyline.setPoint(QPoint(470,20));
+//	polyline.setPoint(QPoint(530,40));
+//	polyline.setPoint(QPoint(540,80));
 
-	polygon.defaultStyle();
-	polygon.drawRectangle(width() - 1, height() - 1);
+//	polyline.setPen(Qt::green, 6, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin);
 
-	Shapes::Rectangle rectangle(this);
+//	polyline.draw();
 
-	rectangle.setRectangle(QRect(20,200,170,100));
+//	polyline.defaultStyle();
+//	polyline.drawRectangle(width() - 1, height() - 1);
 
-	rectangle.setPen(Qt::blue, 0, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin);
-	rectangle.setBrush(Qt::red, Qt::VerPattern);
+//	Shapes::Polygon polygon(this);
 
-	rectangle.draw();
+//	polygon.setPoint(QPoint(900,90));
+//	polygon.setPoint(QPoint(910,20));
+//	polygon.setPoint(QPoint(970,40));
+//	polygon.setPoint(QPoint(980,80));
 
-	rectangle.defaultStyle();
-	rectangle.drawRectangle(width() - 1, height() - 1);
+//	polygon.setPen(Qt::cyan, 6, Qt::DashDotDotLine, Qt::FlatCap, Qt::MiterJoin);
+//	polygon.setBrush(Qt::yellow, Qt::SolidPattern);
 
-	Shapes::Ellipse ellipse(this);
+//	polygon.draw();
 
-	ellipse.setEllipse(QRect(520,200,170,100));
+//	polygon.defaultStyle();
+//	polygon.drawRectangle(width() - 1, height() - 1);
 
-	ellipse.setPen(Qt::black, 10, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
-	ellipse.setBrush(Qt::black, Qt::NoBrush);
+//	Shapes::Rectangle rectangle(this);
 
-	ellipse.draw();
+//	rectangle.setRectangle(QRect(20,200,170,100));
 
-	ellipse.defaultStyle();
-	ellipse.drawRectangle(width() - 1, height() - 1);
+//	rectangle.setPen(Qt::blue, 0, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin);
+//	rectangle.setBrush(Qt::red, Qt::VerPattern);
+
+//	rectangle.draw();
+
+//	rectangle.defaultStyle();
+//	rectangle.drawRectangle(width() - 1, height() - 1);
+
+//	Shapes::Ellipse ellipse(this);
+
+//	ellipse.setEllipse(QRect(520,200,170,100));
+
+//	ellipse.setPen(Qt::black, 10, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+//	ellipse.setBrush(Qt::black, Qt::NoBrush);
+
+//	ellipse.draw();
+
+//	ellipse.defaultStyle();
+//	ellipse.drawRectangle(width() - 1, height() - 1);
 
 	Shapes::Text text(this);
 
@@ -100,4 +107,9 @@ void canvas::paintEvent(QPaintEvent *)
 
 	text.draw();
 
+}
+
+void canvas::on_pushButton_load_clicked()
+{
+	readFile = true;
 }

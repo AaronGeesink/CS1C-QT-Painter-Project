@@ -15,13 +15,17 @@ class canvas : public QWidget
 public:
 	explicit canvas(QWidget *parent = nullptr);
 	~canvas() override;
+	vector<Shapes::Shape*> shapesData;
 
 protected:
 	void paintEvent(QPaintEvent *) override;
 
+private slots:
+	void on_pushButton_load_clicked();
+
 private:
 	Ui::canvas *ui;
-	vector<Shapes::Shape*> shapesData;
+	bool readFile;
 };
 
 #endif // CANVAS_H
