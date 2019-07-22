@@ -21,6 +21,7 @@ public:
 	void parsePolygon(Shapes::Polygon* pPolygon, std::ifstream& inFile);
 	void parseRectangle(Shapes::Rectangle* pRectangle, std::ifstream& inFile);
 	void parseEllipse(Shapes::Ellipse* pEllipse, std::ifstream& inFile);
+	void parseText(Shapes::Text* pText, std::ifstream& inFile);
 
 	QPoint parsePoint(string& points);
 	Qt::GlobalColor parseColor(string& color);
@@ -30,6 +31,12 @@ public:
 	Qt::PenJoinStyle parseJoin(string& join);
 	Qt::BrushStyle parseBrushStyle(string& brushStyle);
 	QRect parseRect(string& rect);
+
+	QString parseString(string& text);
+	Qt::AlignmentFlag parseAlignment(string& alignment);
+	QString parseFont(string& font);
+	QFont::Style parseTextStyle(string& textStyle);
+	QFont::Weight parseWeight(string& weight);
 
 	void removeSpaces(string& str);
 
@@ -44,11 +51,6 @@ private:
 	vector<Shapes::Shape*> loadedShapes;
 
 	/*
-	QPen pen;
-	QBrush brush;
-
-	QRect rect;
-	vector<QPoint> points;
 	QFont font;
 	QString text;
 	Qt::AlignmentFlag alignment;

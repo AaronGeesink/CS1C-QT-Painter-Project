@@ -134,8 +134,14 @@ public:
 
 	void setText(const QRect& rect, const QString& text);
 	void setFont(const QString& family, QFont::Weight weight, QFont::Style style, int size, Qt::AlignmentFlag alignment);
+
 	void setFont(const QString& family);
 	void setString(const QString& text);
+	void setRect(const QRect& rect);
+	void setWeight(QFont::Weight weight);
+	void setStyle(QFont::Style style);
+	void setPointSize(int size);
+	void setAlignment(Qt::AlignmentFlag alignment);
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
 

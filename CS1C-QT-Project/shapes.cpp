@@ -223,6 +223,32 @@ void Text::setFont(const QString& family)
 	font.setFamily(family);
 }
 
+void Text::setRect(const QRect& rect)
+{
+	this->rect = rect;
+}
+
+void Text::setWeight(QFont::Weight weight)
+{
+	font.setWeight(weight);
+}
+
+void Text::setStyle(QFont::Style style)
+{
+	font.setStyle(style);
+}
+
+void Text::setPointSize(int size)
+{
+	font.setPointSize(size);
+}
+
+void Text::setAlignment(Qt::AlignmentFlag alignment)
+{
+	this->alignment = alignment;
+}
+
+
 void Shapes::Text::draw(const int translateX, const int translateY)
 {
 	getQPainter().setFont(font);

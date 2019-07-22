@@ -26,6 +26,8 @@ private slots:
 private:
 	Ui::canvas *ui;
 	bool readFile;
+	int x;
+	int y;
 };
 
 #endif // CANVAS_H
