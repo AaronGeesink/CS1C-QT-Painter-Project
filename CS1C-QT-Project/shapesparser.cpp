@@ -130,12 +130,12 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 					case 'T':
 					{
 						// construct text
-						Shapes::Text* pText = new Shapes::Text(device);
+//						Shapes::Text* pText = new Shapes::Text(device);
 
-						parseText(pText, inFile);
-						pText->draw();
+//						parseText(pText, inFile);
+//						pText->draw();
 
-						loadedShapes.push_back(pText);
+//						loadedShapes.push_back(pText);
 						break;
 					}
 					default:
@@ -465,65 +465,65 @@ void ShapesParser::parseEllipse(Shapes::Ellipse* pEllipse, std::ifstream& inFile
 	}
 }
 
-void ShapesParser::parseText(Shapes::Text* pText, std::ifstream& inFile)
-{
-	while (line != "")
-	{
-		std::getline(inFile, line);
-		std::istringstream lineStream(line);
+//void ShapesParser::parseText(Shapes::Text* pText, std::ifstream& inFile)
+//{
+//	while (line != "")
+//	{
+//		std::getline(inFile, line);
+//		std::istringstream lineStream(line);
 
-		std::getline(lineStream, setting, ' ');
-		std::getline(lineStream, value, '\n');
+//		std::getline(lineStream, setting, ' ');
+//		std::getline(lineStream, value, '\n');
 
-		switch(setting[0])
-		{
-			case 'S':
-			{
-				pText->setRect(parseRect(value));
-				break;
-			}
-			case 'T':
-			{
-				if (setting[4] == 'S')
-				{
-					pText->setString(parseString(value));
-				}
-				else if (setting[4] == 'C')
-				{
-					pText->setPenColor(parseColor(value));
-				}
-				else if (setting[4] == 'A')
-				{
-					pText->setAlignment(parseAlignment(value));
-				}
-				else if (setting[4] == 'P')
-				{
-					pText->setPointSize(parseInt(value));
-				}
-				else if (setting[4] == 'F')
-				{
-					if (setting[8] == 'F')
-					{
-						pText->setFont(parseFont(value));
-					}
-					else if (setting[8] == 'S')
-					{
-						pText->setStyle(parseTextStyle(value));
-					}
-					else if (setting[8] == 'W')
-					{
-						pText->setWeight(parseWeight(value));
-					}
-				}
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}
-}
+//		switch(setting[0])
+//		{
+//			case 'S':
+//			{
+//				pText->setRect(parseRect(value));
+//				break;
+//			}
+//			case 'T':
+//			{
+//				if (setting[4] == 'S')
+//				{
+//					pText->setString(parseString(value));
+//				}
+//				else if (setting[4] == 'C')
+//				{
+//					pText->setPenColor(parseColor(value));
+//				}
+//				else if (setting[4] == 'A')
+//				{
+//					pText->setAlignment(parseAlignment(value));
+//				}
+//				else if (setting[4] == 'P')
+//				{
+//					pText->setPointSize(parseInt(value));
+//				}
+//				else if (setting[4] == 'F')
+//				{
+//					if (setting[8] == 'F')
+//					{
+//						pText->setFont(parseFont(value));
+//					}
+//					else if (setting[8] == 'S')
+//					{
+//						pText->setStyle(parseTextStyle(value));
+//					}
+//					else if (setting[8] == 'W')
+//					{
+//						pText->setWeight(parseWeight(value));
+//					}
+//				}
+//				break;
+//			}
+//			default:
+//			{
+//				break;
+//			}
+//		}
+//	}
+//}
 
 
 QPoint ShapesParser::parsePoint(string& points)
@@ -739,7 +739,7 @@ QRect ShapesParser::parseRect(string& rect)
 	}
 }
 
-QString ShapesParser::parseString(string& text);
+//QString ShapesParser::parseString(string& text);
 
 
 Qt::AlignmentFlag ShapesParser::parseAlignment(string& alignment)
@@ -764,23 +764,42 @@ Qt::AlignmentFlag ShapesParser::parseAlignment(string& alignment)
 QString ShapesParser::parseFont(string& font)
 {
 	switch(font[0])
-	case 'C':
 	{
-		if (font[2] == 'm')
+		case 'C':
 		{
-			QString fontFamily = "Comic Sans MS";
+			if (font[2] == 'm')
+			{
+				QString fontFamily = "Comic Sans MS";
+				return fontFamily;
+			}
+			else if (font[2] == 'u')
+			{
+				QString fontFamily = "Courier";
+				return fontFamily;
+			}
+			else
+			{
+				QString fontFamily = "Times";
+				return fontFamily;
+			}
+		}
+		case 'H':
+		{
+			QString fontFamily = "Helvetica";
 			return fontFamily;
 		}
-		else if (font[2] == 'u')
+		case 'T':
 		{
-			QString fontFamily = "Courier";
+			QString fontFamily = "Times";
+			return fontFamily;
+		}
+		default:
+		{
+			QString fontFamily = "Times";
 			return fontFamily;
 		}
 	}
-	case 'H':
-		return;
-	case 'T':
-		return;
 }
-QFont::Style ShapesParser::parseTextStyle(string& textStyle);
-QFont::Weight ShapesParser::parseWeight(string& weight);
+
+//QFont::Style ShapesParser::parseTextStyle(string& textStyle);
+//QFont::Weight ShapesParser::parseWeight(string& weight);
