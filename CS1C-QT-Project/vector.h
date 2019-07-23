@@ -4,6 +4,11 @@
 // vector.h - class specification
 // a vector which approximates the stl vector
 
+//! vector class
+/*!
+  An array-based vector which approximates the STL vector. The size of the array increases in size as needed when data is added
+*/
+
 #include <algorithm>
 using std::move;
 using std::swap;
@@ -21,14 +26,60 @@ private:
     T* elem; // a pointer to the elements
 
 public:
+    //! vector class default constructor
+    /*!
+      Initializes an empty vector class object with size_v = 0, space = 0, and elem = new T[0]
+    */
     vector(); // default constructor
-    explicit vector(int s); // alternate constructor
-    vector(const vector& source); // copy constructor
-    vector& operator=(const vector& source); // copy assignment
-    vector(const vector&&source); // move constructor
-    vector& operator=(const vector&& source); // move assignment
+
+    //! vector class destructor
+    /*!
+
+    */
     ~vector(); // destructor
+
+    //! vector class alternate constructor
+    /*!
+      \param s an integer amount
+      Initializes an empty vector class object with size_v = s, space = 0, and elem = new T[s]
+    */
+    explicit vector(int s); // alternate constructor
+
+    //! vector class copy constructor
+    /*!
+      \param source a vector vector argument
+      Initializes a vector class object as a copy of source
+    */
+    vector(const vector& source); // copy constructor
+
+    //! vector class copy assignment
+    /*!
+      Deletes the existing data in the invoking vector and then copies over all data from the source vector to the invoking vector
+    */
+    vector& operator=(const vector& source); // copy assignment
+
+    //! vector class move constructor
+    /*!
+
+    */
+    vector(const vector&&source); // move constructor
+
+    //! vector class move assignment
+    /*!
+
+    */
+    vector& operator=(const vector&& source); // move assignment
+
+    //! Overloaded vector subscript operator []
+    /*!
+
+    */
     T& operator[] (int n); // access: return reference
+
+    //! Overloaded const vector subscript operator []
+    /*!
+
+    */
     const T& operator[] (int n) const; // access: const return reference
 
     int size() const; // the current size
@@ -51,6 +102,13 @@ public:
 template<class T>
 inline vector<T>::vector() : size_v{ 0 }, space{ 0 }, elem{new T[0]}
 {}
+
+// Destructor
+template<class T>
+inline vector<T>::~vector()
+{
+    delete [] elem;
+}
 
 // Overloaded constructor
 template<class T>
@@ -109,13 +167,6 @@ inline vector<T> & vector<T>::operator=(const vector && source)
     source.size_v = 0;
     source.space = 0;
     return *this;
-}
-
-// Destructor
-template<class T>
-inline vector<T>::~vector()
-{
-    delete [] elem;
 }
 
 // Access return reference
