@@ -40,6 +40,9 @@ void canvas::loadFile()
 
 void canvas::paintEvent(QPaintEvent *)
 {
+
+	//shapesData = shapesData;
+	//QPainter painter(this);
 	//if (readFile)
 	//{
 		ShapesParser parser;
@@ -49,9 +52,15 @@ void canvas::paintEvent(QPaintEvent *)
 
 	for (Shapes::Shape* shape : shapesData)
 	{
-		//shape->draw(shape->getX(), shape->getY());
-		shape->draw(0,0);
+		shape->draw(shape->getX(), shape->getY());
+		//shape->draw(0,0);
+		qInfo() << shape->getId();
 	}
+
+//	for (int i = 0; i < shapesData.size(); i++)
+//	{
+//		shapesData[0]->draw(shapesData[0]->getX(), shapesData[0]->getY());
+//	}
 
 }
 

@@ -52,8 +52,8 @@ protected:
 private:
 	QPainter qpainter;
 
-	int x;
-	int y;
+	int x {0};
+	int y {0};
 	int id;
 	ShapeType shape;
 	QPen pen;

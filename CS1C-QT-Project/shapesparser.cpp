@@ -152,6 +152,9 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 
 	inFile.close();
 
+	for (int i = 0; i < loadedShapes.size(); i++)
+		qInfo() << loadedShapes[i]->getX();
+
 	return loadedShapes;
 }
 
