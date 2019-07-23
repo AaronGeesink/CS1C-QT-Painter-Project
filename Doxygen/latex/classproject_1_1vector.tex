@@ -1,0 +1,398 @@
+\hypertarget{classproject_1_1vector}{}\section{project\+::vector$<$ T $>$ Class Template Reference}
+\label{classproject_1_1vector}\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} = T $\ast$
+\item 
+using \mbox{\hyperlink{classproject_1_1vector_ab242a1c8c7abec9b305e502ff7cd0fb2}{const\+\_\+iterator}} = const T $\ast$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classproject_1_1vector_ae194dee52fe56d5fe6625021aad2d63d}{vector}} ()
+\begin{DoxyCompactList}\small\item\em vector class default constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_a7abf9e5bf13e90184fe454e468e282d4}{$\sim$vector}} ()
+\begin{DoxyCompactList}\small\item\em vector class destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_ad065d3806d059712feea6fb639b35f87}{vector}} (int s)
+\begin{DoxyCompactList}\small\item\em vector class alternate constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_af93a6afbfc6eeefb9b712660685e17cf}{vector}} (const \mbox{\hyperlink{classproject_1_1vector}{vector}} \&source)
+\begin{DoxyCompactList}\small\item\em vector class copy constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector}{vector}} \& \mbox{\hyperlink{classproject_1_1vector_a0c815ad332028cd9c33ea6a441c6b54f}{operator=}} (const \mbox{\hyperlink{classproject_1_1vector}{vector}} \&source)
+\begin{DoxyCompactList}\small\item\em vector class copy assignment \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_acdd6c35b3513c3be41b5afcfc9470866}{vector}} (const \mbox{\hyperlink{classproject_1_1vector}{vector}} \&\&source)
+\begin{DoxyCompactList}\small\item\em vector class move constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector}{vector}} \& \mbox{\hyperlink{classproject_1_1vector_aadeeb218c94243fed0d8c6c14f1ac62d}{operator=}} (const \mbox{\hyperlink{classproject_1_1vector}{vector}} \&\&source)
+\begin{DoxyCompactList}\small\item\em vector class move assignment \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{classproject_1_1vector_a24d62308b10b6cd2712964d0ac9597dd}{operator\mbox{[}$\,$\mbox{]}}} (int n)
+\begin{DoxyCompactList}\small\item\em Overloaded vector subscript operator \mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+const T \& \mbox{\hyperlink{classproject_1_1vector_ab75b6014a2b266c0b5e13b64efebcf7e}{operator\mbox{[}$\,$\mbox{]}}} (int n) const
+\begin{DoxyCompactList}\small\item\em Overloaded const vector subscript operator \mbox{[}\mbox{]}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classproject_1_1vector_ac7e1b54fa8a66be408bd42cb60840084}{size}} () const
+\begin{DoxyCompactList}\small\item\em Member function that returns the number of T elements in the vector. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classproject_1_1vector_a58b02d28811d347a6d0eed40a1d5614b}{capacity}} () const
+\begin{DoxyCompactList}\small\item\em Member function that returns the capacity of the vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classproject_1_1vector_a48ef25366c7155a905a0f2d4fa97f4fa}{resize}} (int newsize)
+\begin{DoxyCompactList}\small\item\em Resizes the vector so that it contains new\+Size elements. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classproject_1_1vector_a0663a56a33c99d3117ab2361f8544507}{push\+\_\+back}} (T val)
+\begin{DoxyCompactList}\small\item\em Adds a T value to the end of the vector, and resizes the vector if necessary. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classproject_1_1vector_ab1cd63b3d7cd670c1b5c001513772d27}{reserve}} (int newalloc)
+\begin{DoxyCompactList}\small\item\em Resizes the vector so it contains at least newalloc elements. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} \mbox{\hyperlink{classproject_1_1vector_a324695bbd462ffcced50b8f3ac75ca68}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Member function that returns a reference to the first element of the vector array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_ab242a1c8c7abec9b305e502ff7cd0fb2}{const\+\_\+iterator}} \mbox{\hyperlink{classproject_1_1vector_ac10d2b8ac2cee034dddadc2b7f06b9de}{begin}} () const
+\begin{DoxyCompactList}\small\item\em Member function that returns a reference to the first element of the vector array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} \mbox{\hyperlink{classproject_1_1vector_a3b63135e2ef4bca97d475d743c86f50a}{end}} ()
+\begin{DoxyCompactList}\small\item\em Member function that returns a reference to the after-\/the-\/end element of the vector array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_ab242a1c8c7abec9b305e502ff7cd0fb2}{const\+\_\+iterator}} \mbox{\hyperlink{classproject_1_1vector_acbbe95f585298ffc4061563b6ce4fe98}{end}} () const
+\begin{DoxyCompactList}\small\item\em Member function that returns a reference to the after-\/the-\/end element of the vector array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} \mbox{\hyperlink{classproject_1_1vector_a679394aec4be2d7ceea3261e47302545}{insert}} (\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} p, const T \&v)
+\begin{DoxyCompactList}\small\item\em Member function that inserts an element into a vector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} \mbox{\hyperlink{classproject_1_1vector_a5eb1005385fe0b2b9df65b32d9152619}{erase}} (\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} p)
+\begin{DoxyCompactList}\small\item\em Member function that removes an element from a vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classproject_1_1vector_ab242a1c8c7abec9b305e502ff7cd0fb2}\label{classproject_1_1vector_ab242a1c8c7abec9b305e502ff7cd0fb2}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!const\_iterator@{const\_iterator}}
+\index{const\_iterator@{const\_iterator}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{const\_iterator}{const\_iterator}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+using \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector_ab242a1c8c7abec9b305e502ff7cd0fb2}{const\+\_\+iterator}} =  const T $\ast$}
+
+T pointer used as a const iterator. \mbox{\Hypertarget{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}\label{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!iterator@{iterator}}
+\index{iterator@{iterator}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{iterator}{iterator}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+using \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} =  T $\ast$}
+
+T pointer used as an iterator. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classproject_1_1vector_ae194dee52fe56d5fe6625021aad2d63d}\label{classproject_1_1vector_ae194dee52fe56d5fe6625021aad2d63d}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!vector@{vector}}
+\index{vector@{vector}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{vector()}{vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector}{vector}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+vector class default constructor 
+
+Initializes an empty vector class object with size\+\_\+v = 0, space = 0, and elem = new T\mbox{[}0\mbox{]} \mbox{\Hypertarget{classproject_1_1vector_a7abf9e5bf13e90184fe454e468e282d4}\label{classproject_1_1vector_a7abf9e5bf13e90184fe454e468e282d4}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!````~vector@{$\sim$vector}}
+\index{````~vector@{$\sim$vector}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{$\sim$vector()}{~vector()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{classproject_1_1vector}{vector}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+vector class destructor 
+
+Deallocates the array of elements in the vector (delete \mbox{[}\mbox{]} elem) \mbox{\Hypertarget{classproject_1_1vector_ad065d3806d059712feea6fb639b35f87}\label{classproject_1_1vector_ad065d3806d059712feea6fb639b35f87}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!vector@{vector}}
+\index{vector@{vector}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{vector()}{vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector}{vector}} (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+vector class alternate constructor 
+
+Initializes an empty vector class object with size\+\_\+v = s, space = 0, and elem = new T\mbox{[}s\mbox{]} 
+\begin{DoxyParams}{Parameters}
+{\em s} & an integer amount \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classproject_1_1vector_af93a6afbfc6eeefb9b712660685e17cf}\label{classproject_1_1vector_af93a6afbfc6eeefb9b712660685e17cf}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!vector@{vector}}
+\index{vector@{vector}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{vector()}{vector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector}{vector}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$ \&}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+vector class copy constructor 
+
+Initializes a vector class object as a copy of source 
+\begin{DoxyParams}{Parameters}
+{\em source} & a vector argument \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classproject_1_1vector_acdd6c35b3513c3be41b5afcfc9470866}\label{classproject_1_1vector_acdd6c35b3513c3be41b5afcfc9470866}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!vector@{vector}}
+\index{vector@{vector}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{vector()}{vector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector}{vector}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$ \&\&}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+vector class move constructor 
+
+Initializes a vector and transfers data from source to that vector 
+\begin{DoxyParams}{Parameters}
+{\em source} & a vector rvalue \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classproject_1_1vector_a324695bbd462ffcced50b8f3ac75ca68}\label{classproject_1_1vector_a324695bbd462ffcced50b8f3ac75ca68}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!begin@{begin}}
+\index{begin@{begin}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function that returns a reference to the first element of the vector array. 
+
+\begin{DoxyReturn}{Returns}
+\&elem\mbox{[}0\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_ac10d2b8ac2cee034dddadc2b7f06b9de}\label{classproject_1_1vector_ac10d2b8ac2cee034dddadc2b7f06b9de}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!begin@{begin}}
+\index{begin@{begin}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{begin()}{begin()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector_ab242a1c8c7abec9b305e502ff7cd0fb2}{const\+\_\+iterator}} \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function that returns a reference to the first element of the vector array. 
+
+\begin{DoxyReturn}{Returns}
+\&elem\mbox{[}0\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_a58b02d28811d347a6d0eed40a1d5614b}\label{classproject_1_1vector_a58b02d28811d347a6d0eed40a1d5614b}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!capacity@{capacity}}
+\index{capacity@{capacity}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{capacity()}{capacity()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function that returns the capacity of the vector. 
+
+\begin{DoxyReturn}{Returns}
+the space of the vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_a3b63135e2ef4bca97d475d743c86f50a}\label{classproject_1_1vector_a3b63135e2ef4bca97d475d743c86f50a}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!end@{end}}
+\index{end@{end}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function that returns a reference to the after-\/the-\/end element of the vector array. 
+
+\begin{DoxyReturn}{Returns}
+\&elem\mbox{[}size\+\_\+v\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_acbbe95f585298ffc4061563b6ce4fe98}\label{classproject_1_1vector_acbbe95f585298ffc4061563b6ce4fe98}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!end@{end}}
+\index{end@{end}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{end()}{end()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector_ab242a1c8c7abec9b305e502ff7cd0fb2}{const\+\_\+iterator}} \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function that returns a reference to the after-\/the-\/end element of the vector array. 
+
+\begin{DoxyReturn}{Returns}
+\&elem\mbox{[}size\+\_\+v\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_a5eb1005385fe0b2b9df65b32d9152619}\label{classproject_1_1vector_a5eb1005385fe0b2b9df65b32d9152619}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!erase@{erase}}
+\index{erase@{erase}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function that removes an element from a vector. 
+
+Remove the vector element pointed to by p 
+\begin{DoxyParams}{Parameters}
+{\em p} & an iterator argument (T $\ast$) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\&elem\mbox{[}size\+\_\+v\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_a679394aec4be2d7ceea3261e47302545}\label{classproject_1_1vector_a679394aec4be2d7ceea3261e47302545}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$\+::\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}} \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classproject_1_1vector_a429c6a5f47b0de55ac858b3be5aeda8b}{iterator}}}]{p,  }\item[{const T \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function that inserts an element into a vector. 
+
+Inserts a new element, v, before address p 
+\begin{DoxyParams}{Parameters}
+{\em p} & an iterator argument (T $\ast$) \\
+\hline
+{\em v} & a T reference argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\&elem\mbox{[}size\+\_\+v\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_a0c815ad332028cd9c33ea6a441c6b54f}\label{classproject_1_1vector_a0c815ad332028cd9c33ea6a441c6b54f}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$ \& \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$ \&}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+vector class copy assignment 
+
+Deletes the existing data in the invoking vector and then copies over all data from the source vector to the invoking vector 
+\begin{DoxyParams}{Parameters}
+{\em source} & a vector argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the copied data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_aadeeb218c94243fed0d8c6c14f1ac62d}\label{classproject_1_1vector_aadeeb218c94243fed0d8c6c14f1ac62d}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$ \& \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ T $>$ \&\&}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+vector class move assignment 
+
+Deletes the data inside of the invoking vector and then transfers data from source to that vector 
+\begin{DoxyParams}{Parameters}
+{\em source} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the source data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_a24d62308b10b6cd2712964d0ac9597dd}\label{classproject_1_1vector_a24d62308b10b6cd2712964d0ac9597dd}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \& \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded vector subscript operator \mbox{[}\mbox{]}. 
+
+Allows the client to use the subscript operator (\mbox{[}\mbox{]}) to access elements in a vector 
+\begin{DoxyParams}{Parameters}
+{\em n} & an integer argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The T data stored in vector\mbox{[}n\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_ab75b6014a2b266c0b5e13b64efebcf7e}\label{classproject_1_1vector_ab75b6014a2b266c0b5e13b64efebcf7e}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const T \& \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded const vector subscript operator \mbox{[}\mbox{]}. 
+
+Allows a const-\/scope client to use the subscript operator (\mbox{[}\mbox{]}) to access elements in a vector 
+\begin{DoxyParams}{Parameters}
+{\em n} & an integer argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The T data stored in vector\mbox{[}n\mbox{]} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classproject_1_1vector_a0663a56a33c99d3117ab2361f8544507}\label{classproject_1_1vector_a0663a56a33c99d3117ab2361f8544507}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{T}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds a T value to the end of the vector, and resizes the vector if necessary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & a T argument \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classproject_1_1vector_ab1cd63b3d7cd670c1b5c001513772d27}\label{classproject_1_1vector_ab1cd63b3d7cd670c1b5c001513772d27}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!reserve@{reserve}}
+\index{reserve@{reserve}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{reserve()}{reserve()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::reserve (\begin{DoxyParamCaption}\item[{int}]{newalloc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resizes the vector so it contains at least newalloc elements. 
+
+If newalloc is less than the current size\+\_\+v, then the function does nothing. 
+\begin{DoxyParams}{Parameters}
+{\em newalloc} & an int argument. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classproject_1_1vector_a48ef25366c7155a905a0f2d4fa97f4fa}\label{classproject_1_1vector_a48ef25366c7155a905a0f2d4fa97f4fa}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!resize@{resize}}
+\index{resize@{resize}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::resize (\begin{DoxyParamCaption}\item[{int}]{newsize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resizes the vector so that it contains new\+Size elements. 
+
+If new\+Size is smaller than the current container size, the vector is reduced to its first new\+Size elements. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Size} & an int argument. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classproject_1_1vector_ac7e1b54fa8a66be408bd42cb60840084}\label{classproject_1_1vector_ac7e1b54fa8a66be408bd42cb60840084}} 
+\index{project::vector$<$ T $>$@{project::vector$<$ T $>$}!size@{size}}
+\index{size@{size}!project::vector$<$ T $>$@{project::vector$<$ T $>$}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classproject_1_1vector}{project\+::vector}}$<$ T $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Member function that returns the number of T elements in the vector. 
+
+\begin{DoxyReturn}{Returns}
+The size\+\_\+v of the vector 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/chatm/\+Desktop/\+C\+S1\+C-\/\+Q\+T-\/\+Project/\+C\+S1\+C-\/\+Q\+T-\/\+Project/vector.\+h\end{DoxyCompactItemize}

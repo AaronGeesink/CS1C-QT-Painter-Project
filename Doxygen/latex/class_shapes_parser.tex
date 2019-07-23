@@ -1,0 +1,77 @@
+\hypertarget{class_shapes_parser}{}\section{Shapes\+Parser Class Reference}
+\label{class_shapes_parser}\index{ShapesParser@{ShapesParser}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a38e09afabacf59de58aaa83722b1524b}\label{class_shapes_parser_a38e09afabacf59de58aaa83722b1524b}} 
+\mbox{\hyperlink{classproject_1_1vector}{vector}}$<$ \mbox{\hyperlink{class_shapes_1_1_shape}{Shapes\+::\+Shape}} $\ast$ $>$ \& {\bfseries read\+Shapes\+File} (Q\+Paint\+Device $\ast$device)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a2592fe033d8c7d68aa53cb0300410eab}\label{class_shapes_parser_a2592fe033d8c7d68aa53cb0300410eab}} 
+void {\bfseries write\+Shapes\+File} ()
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a270d7013a6d3705ecea43edf6869addc}\label{class_shapes_parser_a270d7013a6d3705ecea43edf6869addc}} 
+void {\bfseries parse\+Line} (\mbox{\hyperlink{class_shapes_1_1_line}{Shapes\+::\+Line}} $\ast$p\+Line, std\+::ifstream \&in\+File)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_ac265a6eacb930cfae5278ea85a571127}\label{class_shapes_parser_ac265a6eacb930cfae5278ea85a571127}} 
+void {\bfseries parse\+Polyline} (\mbox{\hyperlink{class_shapes_1_1_polyline}{Shapes\+::\+Polyline}} $\ast$p\+Polyline, std\+::ifstream \&in\+File)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a3fb742510e8f672afabe5a22126fcaa8}\label{class_shapes_parser_a3fb742510e8f672afabe5a22126fcaa8}} 
+void {\bfseries parse\+Polygon} (\mbox{\hyperlink{class_shapes_1_1_polygon}{Shapes\+::\+Polygon}} $\ast$p\+Polygon, std\+::ifstream \&in\+File)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a9de13df04fc0079a1c0e9957bc4c9039}\label{class_shapes_parser_a9de13df04fc0079a1c0e9957bc4c9039}} 
+void {\bfseries parse\+Rectangle} (\mbox{\hyperlink{class_shapes_1_1_rectangle}{Shapes\+::\+Rectangle}} $\ast$p\+Rectangle, std\+::ifstream \&in\+File)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a078e0fa75724c7e593c5f2e9d048c020}\label{class_shapes_parser_a078e0fa75724c7e593c5f2e9d048c020}} 
+void {\bfseries parse\+Ellipse} (\mbox{\hyperlink{class_shapes_1_1_ellipse}{Shapes\+::\+Ellipse}} $\ast$p\+Ellipse, std\+::ifstream \&in\+File)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a3f7676037861b07c216431e2ab8aefba}\label{class_shapes_parser_a3f7676037861b07c216431e2ab8aefba}} 
+void {\bfseries parse\+Text} (\mbox{\hyperlink{class_shapes_1_1_text}{Shapes\+::\+Text}} $\ast$p\+Text, std\+::ifstream \&in\+File)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a39817b684c72029331ddaa825897bed5}\label{class_shapes_parser_a39817b684c72029331ddaa825897bed5}} 
+Q\+Point {\bfseries parse\+Point} (string \&points)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_af7d198702c437f636834f6cc17e7a26a}\label{class_shapes_parser_af7d198702c437f636834f6cc17e7a26a}} 
+Qt\+::\+Global\+Color {\bfseries parse\+Color} (string \&color)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_ac71ae59c3922ff3ace1a51ba0b7a2dc9}\label{class_shapes_parser_ac71ae59c3922ff3ace1a51ba0b7a2dc9}} 
+int {\bfseries parse\+Int} (string \&width)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_ad7febc62825c856a66a110ea7f043fc7}\label{class_shapes_parser_ad7febc62825c856a66a110ea7f043fc7}} 
+Qt\+::\+Pen\+Style {\bfseries parse\+Pen\+Style} (string \&pen\+Style)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a365005dcaa449e51c374785f8ef1e6c6}\label{class_shapes_parser_a365005dcaa449e51c374785f8ef1e6c6}} 
+Qt\+::\+Pen\+Cap\+Style {\bfseries parse\+Cap} (string \&cap)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_ad0a440f842537f99f396076dc14c5287}\label{class_shapes_parser_ad0a440f842537f99f396076dc14c5287}} 
+Qt\+::\+Pen\+Join\+Style {\bfseries parse\+Join} (string \&join)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a9dc09a42ec1d62c88a212aa97d4533d8}\label{class_shapes_parser_a9dc09a42ec1d62c88a212aa97d4533d8}} 
+Qt\+::\+Brush\+Style {\bfseries parse\+Brush\+Style} (string \&brush\+Style)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_ae36d2dd274222fcbe7d071c4c26e2e80}\label{class_shapes_parser_ae36d2dd274222fcbe7d071c4c26e2e80}} 
+Q\+Rect {\bfseries parse\+Rect} (string \&rect)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_ad5cd21df924d00b4fd9c96f352e0ad37}\label{class_shapes_parser_ad5cd21df924d00b4fd9c96f352e0ad37}} 
+Q\+String {\bfseries parse\+String} (string \&text)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_ad4720ed4f6357d020ce1dba35e494bd5}\label{class_shapes_parser_ad4720ed4f6357d020ce1dba35e494bd5}} 
+Qt\+::\+Alignment\+Flag {\bfseries parse\+Alignment} (string \&alignment)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a0bc627075b80d13c6fe1d8c0a8cdae59}\label{class_shapes_parser_a0bc627075b80d13c6fe1d8c0a8cdae59}} 
+Q\+String {\bfseries parse\+Font} (string \&font)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_aef6699458d8ea4ac492fd5b822375abc}\label{class_shapes_parser_aef6699458d8ea4ac492fd5b822375abc}} 
+Q\+Font\+::\+Style {\bfseries parse\+Text\+Style} (string \&text\+Style)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a083f0b2599310eeaeee757f0e0e0e371}\label{class_shapes_parser_a083f0b2599310eeaeee757f0e0e0e371}} 
+Q\+Font\+::\+Weight {\bfseries parse\+Weight} (string \&weight)
+\item 
+\mbox{\Hypertarget{class_shapes_parser_a237ba98aca509477828e361e3a1c0d29}\label{class_shapes_parser_a237ba98aca509477828e361e3a1c0d29}} 
+void {\bfseries remove\+Spaces} (string \&str)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/chatm/\+Desktop/\+C\+S1\+C-\/\+Q\+T-\/\+Project/\+C\+S1\+C-\/\+Q\+T-\/\+Project/shapesparser.\+h\item 
+C\+:/\+Users/chatm/\+Desktop/\+C\+S1\+C-\/\+Q\+T-\/\+Project/\+C\+S1\+C-\/\+Q\+T-\/\+Project/shapesparser.\+cpp\end{DoxyCompactItemize}

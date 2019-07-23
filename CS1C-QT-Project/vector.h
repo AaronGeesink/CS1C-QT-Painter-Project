@@ -20,11 +20,6 @@ namespace project
 template<class T>
 class vector
 {
-private:
-    int size_v; /*!< The number of T values stored in the vector. */
-    int space; /*!< The amount of total elements in the vector, initialized or not. */
-    T* elem; /*!< Points to the array of elements in the vector. */
-
 public:
     //! vector class default constructor
     /*!
@@ -41,7 +36,7 @@ public:
     //! vector class alternate constructor
     /*!
       Initializes an empty vector class object with size_v = s, space = 0, and elem = new T[s]
-      \param s an integer amount
+      \param s an integer argument
     */
     explicit vector(int s); // alternate constructor
 
@@ -167,6 +162,15 @@ public:
       \return &elem[size_v]
     */
     iterator erase(iterator p); // remove element pointed to by p
+
+private:
+    //! The number of T values stored in the vector.
+    int size_v;
+    //! The amount of total elements in the vector, initialized or not.
+    int space;
+    //! Points to the array of elements in the vector.
+    T* elem;
+
 };
 
 // Default constructor
