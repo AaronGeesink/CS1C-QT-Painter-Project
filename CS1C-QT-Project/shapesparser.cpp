@@ -305,7 +305,7 @@ void ShapesParser::parsePolygon(Shapes::Polygon* pPolygon, std::ifstream& inFile
 				{
 					pPolygon->setPenColor(parseColor(value));
 				}
-				else if (setting[3] == 'W')
+                else if (setting[3] == 'W')
 				{
 					pPolygon->setPenWidth(parseInt(value));
 				}

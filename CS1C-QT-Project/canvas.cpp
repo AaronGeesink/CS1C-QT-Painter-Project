@@ -1,6 +1,7 @@
 #include "canvas.h"
 #include "ui_canvas.h"
 #include "shapesparser.h"
+#include <QDebug>
 
 canvas::canvas(QWidget *parent) :
 	QWidget(parent),
@@ -15,13 +16,19 @@ canvas::~canvas()
 	delete ui;
 }
 
+void canvas::setPositionCoords(int xCoord, int yCoord)
+{
+    this->xCoord = xCoord;
+    this->xCoord = yCoord;
+}
+
 void canvas::paintEvent(QPaintEvent *)
 {
 	//if (readFile)
 	//{
-		ShapesParser parser;
-		parser.readShapesFile(this);
-		readFile = false;
+//		ShapesParser parser;
+//		parser.readShapesFile(this);
+//		readFile = false;
 		//this->update();
 	//}
 

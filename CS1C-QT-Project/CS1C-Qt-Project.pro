@@ -54,4 +54,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    El Rainmakers logo (qt resize2).png \
     shapes.txt

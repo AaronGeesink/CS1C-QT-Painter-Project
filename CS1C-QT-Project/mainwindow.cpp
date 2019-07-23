@@ -37,6 +37,7 @@ void MainWindow::on_pushButton_login_clicked()
     login -> show();
 }
 
+
 void MainWindow::update()
 {
     if(login->getLoggedInAsAdmin() == true)
@@ -45,7 +46,20 @@ void MainWindow::update()
     }
     else
     {
-
         ui->statusBar->showMessage("Logged in as Guest");
+    }
+}
+
+void MainWindow::on_pushButton_move_clicked()
+{
+    if(login->getLoggedInAsAdmin())
+    {
+        int xCoord = ui->lineEdit_xCoord->text().toInt();
+        int yCoord = ui->lineEdit_yCoord->text().toInt();
+        canvas->setPositionCoords(xCoord,yCoord);
+    }
+    else
+    {
+        login-> show();
     }
 }

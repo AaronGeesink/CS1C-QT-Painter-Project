@@ -25,6 +25,8 @@ private slots:
 
     void on_pushButton_login_clicked();
 
+    void on_pushButton_move_clicked();
+
 private:
     Ui::MainWindow *ui;
 	contact* contact;
