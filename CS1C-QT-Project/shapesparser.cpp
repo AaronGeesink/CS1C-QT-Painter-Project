@@ -4,7 +4,7 @@ ShapesParser::ShapesParser()
 { }
 
 /*vector<Shapes::Line>&*/
-vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
+vector<Shapes::Shape*> ShapesParser::readShapesFile(QPainter * painter)
 {
 	// MUST CHANGE FILE PATH TO BE MORE GENERAL
 	string fileName("C:\\Users\\roverdog\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
@@ -44,7 +44,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 					case 'L':
 					{
 						// construct a line
-						Shapes::Line* pLine = new Shapes::Line(device);
+						Shapes::Line* pLine = new Shapes::Line(painter,id);
 
 						parseLine(pLine, inFile);
 						//pLine->draw();
@@ -58,7 +58,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 						if(value[4] == 'l')
 						{
 							// construct a polyline
-							Shapes::Polyline* pPolyline = new Shapes::Polyline(device);
+							Shapes::Polyline* pPolyline = new Shapes::Polyline(painter,id);
 
 							parsePolyline(pPolyline, inFile);
 							//pPolyline->draw();
@@ -70,7 +70,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 						else if(value[4] == 'g')
 						{
 							// construct a polygon
-							Shapes::Polygon* pPolygon = new Shapes::Polygon(device);
+							Shapes::Polygon* pPolygon = new Shapes::Polygon(painter,id);
 
 							parsePolygon(pPolygon, inFile);
 							//pPolygon->draw();
@@ -82,7 +82,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 					case 'R':
 					{
 						// construct a rectangle
-						Shapes::Rectangle* pRectangle = new Shapes::Rectangle(device);
+						Shapes::Rectangle* pRectangle = new Shapes::Rectangle(painter,id);
 
 						parseRectangle(pRectangle, inFile);
 						//pRectangle->draw();
@@ -94,7 +94,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 					case 'S':
 					{
 						// construct a square
-						Shapes::Rectangle* pRectangle = new Shapes::Rectangle(device);
+						Shapes::Rectangle* pRectangle = new Shapes::Rectangle(painter,id);
 
 						parseRectangle(pRectangle, inFile);
 						//pRectangle->draw();
@@ -106,7 +106,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 					case 'E':
 					{
 						// construct an ellipse
-						Shapes::Ellipse* pEllipse = new Shapes::Ellipse(device);
+						Shapes::Ellipse* pEllipse = new Shapes::Ellipse(painter,id);
 
 						parseEllipse(pEllipse, inFile);
 						//pEllipse->draw();
@@ -118,7 +118,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 					case 'C':
 					{
 						// construct a circle
-						Shapes::Ellipse* pEllipse = new Shapes::Ellipse(device);
+						Shapes::Ellipse* pEllipse = new Shapes::Ellipse(painter,id);
 
 						parseEllipse(pEllipse, inFile);
 						//pEllipse->draw();
@@ -130,7 +130,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 					case 'T':
 					{
 						// construct text
-						Shapes::Text* pText = new Shapes::Text(device);
+						Shapes::Text* pText = new Shapes::Text(painter,id);
 
 						parseText(pText, inFile);
 						//pText->draw();

@@ -13,7 +13,7 @@ public:
 	ShapesParser();
 
 	// MUST CHANGE FILE PATH IN readShapesFile() TO BE MORE GENERAL
-	vector<Shapes::Shape*> readShapesFile(QPaintDevice * device);
+	vector<Shapes::Shape*> readShapesFile(QPainter* painter);
 	void writeShapesFile();
 
 	void parseLine(Shapes::Line* pLine, std::ifstream& inFile);

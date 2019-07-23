@@ -15,9 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	canvas = ui->widget;
 
     ui->statusBar->showMessage("Logged in as Guest");
-    m_timer = new QTimer(this);
-    connect (m_timer,&QTimer::timeout,this,&MainWindow::update);
-    m_timer->start(100);
+	//m_timer = new QTimer(this);
+	//connect (m_timer,&QTimer::timeout,this,&MainWindow::update);
+	//m_timer->start(100);
 	//setBackgroundRole(QPalette::Base);
 	//setAutoFillBackground(true);
 }

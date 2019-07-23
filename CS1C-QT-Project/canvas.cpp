@@ -22,10 +22,10 @@ void canvas::setPositionCoords(int x, int y, int id)
 	{
 		if (shape->getId() == id)
 		{
-			this->xCoord = x;
-			this->yCoord = y;
+			shape->setXY(x,y);
 		}
 	}
+	//repaint();
 }
 
 void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
@@ -40,15 +40,16 @@ void canvas::loadFile()
 
 void canvas::paintEvent(QPaintEvent *)
 {
+	QPainter painter(this);
 
-	//shapesData = shapesData;
-	//QPainter painter(this);
-	//if (readFile)
-	//{
+	QPainter* painterPtr = &painter;
+	if (readFile)
+	{
 		ShapesParser parser;
-		shapesData = parser.readShapesFile(this);
+		shapesData = parser.readShapesFile(painterPtr);
 		readFile = false;
-	//}
+		//update();
+	}
 
 	for (Shapes::Shape* shape : shapesData)
 	{
@@ -57,11 +58,7 @@ void canvas::paintEvent(QPaintEvent *)
 		qInfo() << shape->getId();
 	}
 
-//	for (int i = 0; i < shapesData.size(); i++)
-//	{
-//		shapesData[0]->draw(shapesData[0]->getX(), shapesData[0]->getY());
-//	}
-
+	painter.end();
 }
 
 void canvas::on_pushButton_load_clicked()

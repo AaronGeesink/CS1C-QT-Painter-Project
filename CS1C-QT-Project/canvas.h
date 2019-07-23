@@ -29,8 +29,6 @@ private:
 	Ui::canvas *ui;
 	bool readFile;
 	vector<Shapes::Shape*> shapesData;
-	int xCoord;
-	int yCoord;
 };
 
 #endif // CANVAS_H
