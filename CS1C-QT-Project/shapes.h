@@ -37,6 +37,12 @@ public:
 
 	void defaultStyle();
 	void drawRectangle(int width, int height);
+	void drawID();
+
+	void setXY(int x, int y);
+	int getX();
+	int getY();
+	int getId();
 
 	virtual void draw(const int translateX, const int translateY) = 0;
 
@@ -46,6 +52,8 @@ protected:
 private:
 	QPainter qpainter;
 
+	int x;
+	int y;
 	int id;
 	ShapeType shape;
 	QPen pen;

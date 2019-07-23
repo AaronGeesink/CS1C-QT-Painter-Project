@@ -16,16 +16,16 @@ canvas::~canvas()
 	delete ui;
 }
 
-void canvas::setPositionCoords(int x, int y)
+void canvas::setPositionCoords(int x, int y, int id)
 {
-	qInfo() << x;
-	qInfo() << y;
-
-	this->xCoord = x;
-	this->yCoord = y;
-
-	qInfo() << x;
-	qInfo() << y;
+	for (Shapes::Shape* shape : shapesData)
+	{
+		if (shape->getId() == id)
+		{
+			this->xCoord = x;
+			this->yCoord = y;
+		}
+	}
 }
 
 void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
@@ -47,9 +47,10 @@ void canvas::paintEvent(QPaintEvent *)
 		readFile = false;
 	//}
 
-	for (int i = 0; i < shapesData.size(); i++)
+	for (Shapes::Shape* shape : shapesData)
 	{
-		shapesData[i]->draw(0,0);
+		//shape->draw(shape->getX(), shape->getY());
+		shape->draw(0,0);
 	}
 
 }

@@ -57,11 +57,11 @@ void MainWindow::on_pushButton_move_clicked()
 {
     if(login->getLoggedInAsAdmin())
     {
-		qInfo() << "Before";
         int xCoord = ui->lineEdit_xCoord->text().toInt();
         int yCoord = ui->lineEdit_yCoord->text().toInt();
-		qInfo() << "After";
-		canvas->setPositionCoords(xCoord,yCoord);
+		int id = ui->lineEdit_id->text().toInt();
+
+		canvas->setPositionCoords(xCoord, yCoord, id);
     }
     else
     {

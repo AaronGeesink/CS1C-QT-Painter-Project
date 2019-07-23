@@ -15,7 +15,7 @@ class canvas : public QWidget
 public:
 	explicit canvas(QWidget *parent = nullptr);
 	~canvas() override;
-	void setPositionCoords(int x, int y);
+	void setPositionCoords(int x, int y, int id);
 	void setShapesData(vector<Shapes::Shape*> shapesData);
 	void loadFile();
 

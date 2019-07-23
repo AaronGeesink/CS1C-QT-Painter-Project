@@ -106,6 +106,27 @@ void Shape::drawRectangle(int width, int height)
 
 }
 
+void Shape::setXY(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+int Shape::getX()
+{
+	return x;
+}
+
+int Shape::getY()
+{
+	return y;
+}
+
+int Shape::getId()
+{
+	return id;
+}
+
 void Line::setPoints(const QPoint & pointBegin, const QPoint & pointEnd)
 {
 	this->pointBegin = pointBegin;
@@ -121,6 +142,10 @@ void Line::draw(const int translateX, const int translateY)
 	getQPainter().translate(translateX, translateY);
 
 	getQPainter().drawLine(pointBegin, pointEnd);
+
+//	getQPainter().setFont();
+//	getQPainter().drawText(QPoint(translateX,translateY), QString::number(getId()));
+//	getQPainter().drawText(rect, Qt::AlignCenter, tr("Qt\nProject"));
 
 	getQPainter().restore();
 }
@@ -139,6 +164,9 @@ void Polyline::draw(const int translateX, const int translateY)
 	getQPainter().translate(translateX, translateY);
 
 	getQPainter().drawPolyline(points.begin(), points.size());
+
+	//defaultStyle();
+	//getQPainter().drawText(QPoint(translateX,translateY), QString::number(getId()));
 
 	getQPainter().restore();
 }
