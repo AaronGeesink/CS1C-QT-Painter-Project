@@ -13,7 +13,7 @@ public:
 	ShapesParser();
 
 	// MUST CHANGE FILE PATH IN readShapesFile() TO BE MORE GENERAL
-	vector<Shapes::Shape*>& readShapesFile(QPaintDevice * device);
+	vector<Shapes::Shape*> readShapesFile(QPaintDevice * device);
 	void writeShapesFile();
 
 	void parseLine(Shapes::Line* pLine, std::ifstream& inFile);
@@ -49,12 +49,6 @@ private:
 	string value;
 
 	vector<Shapes::Shape*> loadedShapes;
-
-	/*
-	QFont font;
-	QString text;
-	Qt::AlignmentFlag alignment;
-	*/
 };
 
 #endif // SHAPESPARSER_H

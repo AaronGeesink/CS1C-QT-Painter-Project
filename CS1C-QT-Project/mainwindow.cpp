@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     contact = new class contact(this);
     login = new class login(this);
 
+	canvas = ui->widget;
+
     ui->statusBar->showMessage("Logged in as Guest");
     m_timer = new QTimer(this);
     connect (m_timer,&QTimer::timeout,this,&MainWindow::update);
@@ -65,4 +67,14 @@ void MainWindow::on_pushButton_move_clicked()
     {
         login-> show();
     }
+}
+
+void MainWindow::on_pushButton_load_clicked()
+{
+	canvas->loadFile();
+}
+
+void MainWindow::on_pushButton_save_clicked()
+{
+
 }

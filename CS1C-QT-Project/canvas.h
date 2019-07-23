@@ -17,6 +17,7 @@ public:
 	~canvas() override;
 	void setPositionCoords(int x, int y);
 	void setShapesData(vector<Shapes::Shape*> shapesData);
+	void loadFile();
 
 protected:
 	void paintEvent(QPaintEvent *) override;

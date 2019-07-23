@@ -26,7 +26,7 @@ public:
     vector(const vector& source); // copy constructor
     vector& operator=(const vector& source); // copy assignment
     vector(const vector&&source); // move constructor
-    vector& operator=(const vector&& source); // move assignment
+	vector& operator=(vector&& source); // move assignment
     ~vector(); // destructor
     T& operator[] (int n); // access: return reference
     const T& operator[] (int n) const; // access: const return reference
@@ -98,7 +98,7 @@ inline vector<T>::vector(const vector && source) : size_v{source.size_v}, space{
 
 // Move assignment
 template<class T>
-inline vector<T> & vector<T>::operator=(const vector && source)
+inline vector<T> & vector<T>::operator=(vector && source)
 {
     delete[] elem;
     elem = source.elem;

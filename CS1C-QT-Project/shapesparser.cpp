@@ -4,7 +4,7 @@ ShapesParser::ShapesParser()
 { }
 
 /*vector<Shapes::Line>&*/
-vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
+vector<Shapes::Shape*> ShapesParser::readShapesFile(QPaintDevice * device)
 {
 	// MUST CHANGE FILE PATH TO BE MORE GENERAL
 	string fileName("C:\\Users\\roverdog\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
@@ -47,7 +47,7 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 						Shapes::Line* pLine = new Shapes::Line(device);
 
 						parseLine(pLine, inFile);
-						pLine->draw();
+						//pLine->draw();
 
 						loadedShapes.push_back(pLine);
 
@@ -61,7 +61,7 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 							Shapes::Polyline* pPolyline = new Shapes::Polyline(device);
 
 							parsePolyline(pPolyline, inFile);
-							pPolyline->draw();
+							//pPolyline->draw();
 
 							loadedShapes.push_back(pPolyline);
 
@@ -73,7 +73,7 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 							Shapes::Polygon* pPolygon = new Shapes::Polygon(device);
 
 							parsePolygon(pPolygon, inFile);
-							pPolygon->draw();
+							//pPolygon->draw();
 
 							loadedShapes.push_back(pPolygon);
 						}
@@ -85,7 +85,7 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 						Shapes::Rectangle* pRectangle = new Shapes::Rectangle(device);
 
 						parseRectangle(pRectangle, inFile);
-						pRectangle->draw();
+						//pRectangle->draw();
 
 						loadedShapes.push_back(pRectangle);
 
@@ -97,7 +97,7 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 						Shapes::Rectangle* pRectangle = new Shapes::Rectangle(device);
 
 						parseRectangle(pRectangle, inFile);
-						pRectangle->draw();
+						//pRectangle->draw();
 
 						loadedShapes.push_back(pRectangle);
 
@@ -109,7 +109,7 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 						Shapes::Ellipse* pEllipse = new Shapes::Ellipse(device);
 
 						parseEllipse(pEllipse, inFile);
-						pEllipse->draw();
+						//pEllipse->draw();
 
 						loadedShapes.push_back(pEllipse);
 
@@ -121,7 +121,7 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 						Shapes::Ellipse* pEllipse = new Shapes::Ellipse(device);
 
 						parseEllipse(pEllipse, inFile);
-						pEllipse->draw();
+						//pEllipse->draw();
 
 						loadedShapes.push_back(pEllipse);
 
@@ -133,7 +133,7 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 						Shapes::Text* pText = new Shapes::Text(device);
 
 						parseText(pText, inFile);
-						pText->draw();
+						//pText->draw();
 
 						loadedShapes.push_back(pText);
 						break;
