@@ -16,26 +16,39 @@ canvas::~canvas()
 	delete ui;
 }
 
-void canvas::setPositionCoords(int xCoord, int yCoord)
+void canvas::setPositionCoords(int x, int y)
 {
-    this->xCoord = xCoord;
-    this->xCoord = yCoord;
+	qInfo() << x;
+	qInfo() << y;
+
+	this->xCoord = x;
+	this->yCoord = y;
+
+	qInfo() << x;
+	qInfo() << y;
 }
+
+void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
+{
+	this->shapesData = shapesData;
+}
+
 
 void canvas::paintEvent(QPaintEvent *)
 {
 	//if (readFile)
 	//{
-//		ShapesParser parser;
-//		parser.readShapesFile(this);
+		ShapesParser parser;
+		//this->shapesData =
+		parser.readShapesFile(this);
 //		readFile = false;
 		//this->update();
 	//}
 
-//	for (int i = 0; i < shapesData.size(); i++)
-//	{
-//		shapesData[i]->draw(0,0);
-//	}
+	for (int i = 0; i < shapesData.size(); i++)
+	{
+		shapesData[i]->draw(0,0);
+	}
 
 
 
@@ -105,14 +118,14 @@ void canvas::paintEvent(QPaintEvent *)
 //	ellipse.defaultStyle();
 //	ellipse.drawRectangle(width() - 1, height() - 1);
 
-	Shapes::Text text(this);
+//	Shapes::Text text(this);
 
-	text.setText(QRect(420,300,200,200),"The Rainmakers Class Project");
-	text.setFont("Comic Sans MS", QFont::Normal, QFont::StyleNormal, 10, Qt::AlignCenter);
+//	text.setText(QRect(420,300,200,200),"The Rainmakers Class Project");
+//	text.setFont("Comic Sans MS", QFont::Normal, QFont::StyleNormal, 10, Qt::AlignCenter);
 
-	text.setPen(Qt::blue, 1, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin);
+//	text.setPen(Qt::blue, 1, Qt::SolidLine, Qt::FlatCap, Qt::MiterJoin);
 
-	text.draw();
+//	text.draw();
 
 }
 

@@ -130,12 +130,12 @@ vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 					case 'T':
 					{
 						// construct text
-//						Shapes::Text* pText = new Shapes::Text(device);
+						Shapes::Text* pText = new Shapes::Text(device);
 
-//						parseText(pText, inFile);
-//						pText->draw();
+						parseText(pText, inFile);
+						pText->draw();
 
-//						loadedShapes.push_back(pText);
+						loadedShapes.push_back(pText);
 						break;
 					}
 					default:
@@ -465,65 +465,65 @@ void ShapesParser::parseEllipse(Shapes::Ellipse* pEllipse, std::ifstream& inFile
 	}
 }
 
-//void ShapesParser::parseText(Shapes::Text* pText, std::ifstream& inFile)
-//{
-//	while (line != "")
-//	{
-//		std::getline(inFile, line);
-//		std::istringstream lineStream(line);
+void ShapesParser::parseText(Shapes::Text* pText, std::ifstream& inFile)
+{
+	while (line != "")
+	{
+		std::getline(inFile, line);
+		std::istringstream lineStream(line);
 
-//		std::getline(lineStream, setting, ' ');
-//		std::getline(lineStream, value, '\n');
+		std::getline(lineStream, setting, ' ');
+		std::getline(lineStream, value, '\n');
 
-//		switch(setting[0])
-//		{
-//			case 'S':
-//			{
-//				pText->setRect(parseRect(value));
-//				break;
-//			}
-//			case 'T':
-//			{
-//				if (setting[4] == 'S')
-//				{
-//					pText->setString(parseString(value));
-//				}
-//				else if (setting[4] == 'C')
-//				{
-//					pText->setPenColor(parseColor(value));
-//				}
-//				else if (setting[4] == 'A')
-//				{
-//					pText->setAlignment(parseAlignment(value));
-//				}
-//				else if (setting[4] == 'P')
-//				{
-//					pText->setPointSize(parseInt(value));
-//				}
-//				else if (setting[4] == 'F')
-//				{
-//					if (setting[8] == 'F')
-//					{
-//						pText->setFont(parseFont(value));
-//					}
-//					else if (setting[8] == 'S')
-//					{
-//						pText->setStyle(parseTextStyle(value));
-//					}
-//					else if (setting[8] == 'W')
-//					{
-//						pText->setWeight(parseWeight(value));
-//					}
-//				}
-//				break;
-//			}
-//			default:
-//			{
-//				break;
-//			}
-//		}
-//	}
-//}
+		switch(setting[0])
+		{
+			case 'S':
+			{
+				pText->setRect(parseRect(value));
+				break;
+			}
+			case 'T':
+			{
+				if (setting[4] == 'S')
+				{
+					pText->setString(parseString(value));
+				}
+				else if (setting[4] == 'C')
+				{
+					pText->setPenColor(parseColor(value));
+				}
+				else if (setting[4] == 'A')
+				{
+					pText->setAlignment(parseAlignment(value));
+				}
+				else if (setting[4] == 'P')
+				{
+					pText->setPointSize(parseInt(value));
+				}
+				else if (setting[4] == 'F')
+				{
+					if (setting[8] == 'F')
+					{
+						pText->setFont(parseFont(value));
+					}
+					else if (setting[8] == 'S')
+					{
+						pText->setStyle(parseTextStyle(value));
+					}
+					else if (setting[8] == 'W')
+					{
+						pText->setWeight(parseWeight(value));
+					}
+				}
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}
+}
 
 
 QPoint ShapesParser::parsePoint(string& points)
@@ -739,7 +739,10 @@ QRect ShapesParser::parseRect(string& rect)
 	}
 }
 
-//QString ShapesParser::parseString(string& text);
+QString ShapesParser::parseString(string& text)
+{
+	return QString::fromStdString(text);
+}
 
 
 Qt::AlignmentFlag ShapesParser::parseAlignment(string& alignment)
@@ -801,5 +804,34 @@ QString ShapesParser::parseFont(string& font)
 	}
 }
 
-//QFont::Style ShapesParser::parseTextStyle(string& textStyle);
-//QFont::Weight ShapesParser::parseWeight(string& weight);
+QFont::Style ShapesParser::parseTextStyle(string& textStyle)
+{
+	switch(textStyle[5])
+	{
+		case 'N':
+			return QFont::Style::StyleNormal;
+		case 'I':
+			return QFont::Style::StyleItalic;
+		case 'O':
+			return QFont::Style::StyleOblique;
+		default:
+			return QFont::Style::StyleNormal;
+	}
+}
+
+QFont::Weight ShapesParser::parseWeight(string& weight)
+{
+	switch (weight[0])
+	{
+		case 'T':
+			return QFont::Weight::Thin;
+		case 'L':
+			return QFont::Weight::Light;
+		case 'N':
+			return QFont::Weight::Normal;
+		case 'B':
+			return QFont::Weight::Bold;
+		default:
+			return QFont::Weight::Normal;
+	}
+}

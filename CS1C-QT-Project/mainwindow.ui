@@ -15,6 +15,9 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="3" column="3">
+     <widget class="QLineEdit" name="lineEdit_yCoord"/>
+    </item>
     <item row="3" column="2">
      <widget class="QLabel" name="label_yCoord">
       <property name="text">
@@ -22,18 +25,15 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="5">
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="0" column="0" colspan="5">
+     <widget class="canvas" name="widget" native="true">
+      <property name="enabled">
+       <bool>true</bool>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
       </property>
-     </spacer>
+     </widget>
     </item>
     <item row="1" column="2">
      <widget class="QLabel" name="label_xCoord">
@@ -45,37 +45,17 @@
     <item row="1" column="3">
      <widget class="QLineEdit" name="lineEdit_xCoord"/>
     </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_login">
-      <property name="text">
-       <string>Login</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" colspan="4">
-     <widget class="canvas" name="widget" native="true">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QPushButton" name="pushButton_contact">
-      <property name="text">
-       <string>Contact Us</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="3">
-     <widget class="QLineEdit" name="lineEdit_yCoord"/>
-    </item>
     <item row="1" column="4">
      <widget class="QPushButton" name="pushButton_move">
       <property name="text">
        <string>Move</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButton_login">
+      <property name="text">
+       <string>Login</string>
       </property>
      </widget>
     </item>
@@ -92,6 +72,13 @@
       </property>
      </spacer>
     </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="pushButton_contact">
+      <property name="text">
+       <string>Contact Us</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -100,7 +87,7 @@
      <x>0</x>
      <y>0</y>
      <width>603</width>
-     <height>17</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuContact_Us">
