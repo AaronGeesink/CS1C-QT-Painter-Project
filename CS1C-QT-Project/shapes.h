@@ -16,7 +16,7 @@ class Shape
 public:
 	enum class ShapeType {NoShape, Line, Polyline, Polygon, Rectangle, Ellipse, Text};
 
-	Shape(QPaintDevice* device = nullptr, int id = -1, ShapeType shape = ShapeType::NoShape);
+	Shape(QPainter* painter = nullptr, int id = -1, ShapeType shape = ShapeType::NoShape);
 	virtual ~Shape() { }
 
 	ShapeType getShape() const;
@@ -37,16 +37,28 @@ public:
 
 	void defaultStyle();
 	void drawRectangle(int width, int height);
+	void drawID();
+
+	void setXY(int x, int y);
+	int getX();
+	int getY();
+	int getId();
 
 	virtual void draw(const int translateX, const int translateY) = 0;
+    bool operator<(const Shape&) const;
+    bool operator==(const Shape&) const;
 
 protected:
-	QPainter& getQPainter();
+	QPainter* getQPainter();
 
 private:
-	QPainter qpainter;
+	QPainter* qpainter;
 
-	int id;
+	int x {0};
+	int y {0};
+    int id;
+    double area;
+    double perimeter;
 	ShapeType shape;
 	QPen pen;
 	QBrush brush;
@@ -57,7 +69,7 @@ private:
 class Line : public Shape
 {
 public:
-	Line(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Line} {}
+	Line(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Line} {}
 	~Line() override {}
 
 	void setPoints(const QPoint& pointBegin, const QPoint& pointEnd);
@@ -74,7 +86,7 @@ private:
 class Polyline : public Shape
 {
 public:
-	Polyline(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Polyline} {}
+	Polyline(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Polyline} {}
 	~Polyline() override {}
 
 	void setPoint(const QPoint& point);
@@ -89,7 +101,7 @@ private:
 class Polygon : public Shape
 {
 public:
-	Polygon(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Polygon} {}
+	Polygon(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Polygon} {}
 	~Polygon() override {}
 
 	void setPoint(const QPoint& point);
@@ -103,7 +115,7 @@ private:
 class Rectangle : public Shape
 {
 public:
-	Rectangle(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Rectangle} {}
+	Rectangle(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Rectangle} {}
 	~Rectangle() override {}
 
 	void setRectangle(const QRect& rect);
@@ -116,7 +128,7 @@ private:
 class Ellipse : public Shape
 {
 public:
-	Ellipse(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Ellipse} {}
+	Ellipse(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Ellipse} {}
 	~Ellipse() override {}
 
 	void setEllipse(const QRect& rect);
@@ -129,7 +141,7 @@ private:
 class Text : public Shape
 {
 public:
-	Text(QPaintDevice* device = nullptr, int id = -1) : Shape{device, id, ShapeType::Text} {}
+	Text(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Text} {}
 	~Text() override {}
 
 	void setText(const QRect& rect, const QString& text);

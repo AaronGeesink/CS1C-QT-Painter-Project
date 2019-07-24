@@ -2,14 +2,14 @@
 
 using namespace Shapes;
 
-Shape::Shape(QPaintDevice * device, int id, ShapeType shape)
-	: qpainter{device}, id{id}, shape{shape}
+Shape::Shape(QPainter* painter, int id, ShapeType shape)
+	: qpainter{painter}, id{id}, shape{shape}
 {
 	pen = Qt::SolidLine;
 	brush = Qt::NoBrush;
 }
 
-QPainter& Shape::getQPainter()
+QPainter* Shape::getQPainter()
 {
 	return qpainter;
 }
@@ -94,16 +94,37 @@ void Shape::defaultStyle()
 	brush.setStyle(Qt::NoBrush);
 	brush.setColor(Qt::black);
 
-	getQPainter().setPen(getPen());
-	getQPainter().setBrush(getBrush());
-	getQPainter().save();
+	getQPainter()->setPen(getPen());
+	getQPainter()->setBrush(getBrush());
+	getQPainter()->save();
 }
 
 void Shape::drawRectangle(int width, int height)
 {
-	qpainter.drawRect(QRect(0,0,width,height));
-	qpainter.restore();
+	getQPainter()->drawRect(QRect(0,0,width,height));
+	getQPainter()->restore();
 
+}
+
+void Shape::setXY(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+}
+
+int Shape::getX()
+{
+	return x;
+}
+
+int Shape::getY()
+{
+	return y;
+}
+
+int Shape::getId()
+{
+	return id;
 }
 
 void Line::setPoints(const QPoint & pointBegin, const QPoint & pointEnd)
@@ -114,15 +135,19 @@ void Line::setPoints(const QPoint & pointBegin, const QPoint & pointEnd)
 
 void Line::draw(const int translateX, const int translateY)
 {
-	getQPainter().setPen(getPen());
-	getQPainter().setBrush(getBrush());
+	getQPainter()->setPen(getPen());
+	getQPainter()->setBrush(getBrush());
 
-	getQPainter().save();
-	getQPainter().translate(translateX, translateY);
+	getQPainter()->save();
+	getQPainter()->translate(translateX, translateY);
 
-	getQPainter().drawLine(pointBegin, pointEnd);
+	getQPainter()->drawLine(pointBegin, pointEnd);
 
-	getQPainter().restore();
+//	getQPainter()->setFont();
+//	getQPainter()->drawText(QPoint(translateX,translateY), QString::number(getId()));
+//	getQPainter()->drawText(rect, Qt::AlignCenter, tr("Qt\nProject"));
+
+	getQPainter()->restore();
 }
 
 void Polyline::setPoint(const QPoint & point)
@@ -132,15 +157,18 @@ void Polyline::setPoint(const QPoint & point)
 
 void Polyline::draw(const int translateX, const int translateY)
 {
-	getQPainter().setPen(getPen());
-	getQPainter().setBrush(getBrush());
+	getQPainter()->setPen(getPen());
+	getQPainter()->setBrush(getBrush());
 
-	getQPainter().save();
-	getQPainter().translate(translateX, translateY);
+	getQPainter()->save();
+	getQPainter()->translate(translateX, translateY);
 
-	getQPainter().drawPolyline(points.begin(), points.size());
+	getQPainter()->drawPolyline(points.begin(), points.size());
 
-	getQPainter().restore();
+	//defaultStyle();
+	//getQPainter()->drawText(QPoint(translateX,translateY), QString::number(getId()));
+
+	getQPainter()->restore();
 }
 
 void Polygon::setPoint(const QPoint & point)
@@ -151,15 +179,15 @@ void Polygon::setPoint(const QPoint & point)
 
 void Polygon::draw(const int translateX, const int translateY)
 {
-	getQPainter().setPen(getPen());
-	getQPainter().setBrush(getBrush());
+	getQPainter()->setPen(getPen());
+	getQPainter()->setBrush(getBrush());
 
-	getQPainter().save();
-	getQPainter().translate(translateX, translateY);
+	getQPainter()->save();
+	getQPainter()->translate(translateX, translateY);
 
-	getQPainter().drawPolygon(points.begin(), points.size());
+	getQPainter()->drawPolygon(points.begin(), points.size());
 
-	getQPainter().restore();
+	getQPainter()->restore();
 }
 
 void Rectangle::setRectangle(const QRect & rect)
@@ -169,15 +197,15 @@ void Rectangle::setRectangle(const QRect & rect)
 
 void Rectangle::draw(const int translateX, const int translateY)
 {
-	getQPainter().setPen(getPen());
-	getQPainter().setBrush(getBrush());
+	getQPainter()->setPen(getPen());
+	getQPainter()->setBrush(getBrush());
 
-	getQPainter().save();
-	getQPainter().translate(translateX, translateY);
+	getQPainter()->save();
+	getQPainter()->translate(translateX, translateY);
 
-	getQPainter().drawRect(rect);
+	getQPainter()->drawRect(rect);
 
-	getQPainter().restore();
+	getQPainter()->restore();
 }
 
 void Ellipse::setEllipse(const QRect & rect)
@@ -187,15 +215,15 @@ void Ellipse::setEllipse(const QRect & rect)
 
 void Ellipse::draw(const int translateX, const int translateY)
 {
-	getQPainter().setPen(getPen());
-	getQPainter().setBrush(getBrush());
+	getQPainter()->setPen(getPen());
+	getQPainter()->setBrush(getBrush());
 
-	getQPainter().save();
-	getQPainter().translate(translateX, translateY);
+	getQPainter()->save();
+	getQPainter()->translate(translateX, translateY);
 
-	getQPainter().drawEllipse(rect);
+	getQPainter()->drawEllipse(rect);
 
-	getQPainter().restore();
+	getQPainter()->restore();
 }
 
 void Text::setText(const QRect& rect, const QString& text)
@@ -251,15 +279,25 @@ void Text::setAlignment(Qt::AlignmentFlag alignment)
 
 void Shapes::Text::draw(const int translateX, const int translateY)
 {
-	getQPainter().setFont(font);
-	getQPainter().setPen(getPen());
-	getQPainter().setBrush(getBrush());
+	getQPainter()->setFont(font);
+	getQPainter()->setPen(getPen());
+	getQPainter()->setBrush(getBrush());
 
-	getQPainter().save();
-	getQPainter().translate(translateX, translateY);
+	getQPainter()->save();
+	getQPainter()->translate(translateX, translateY);
 
-	getQPainter().drawText(rect, alignment, text);
+	getQPainter()->drawText(rect, alignment, text);
 
-	getQPainter().restore();
+	getQPainter()->restore();
 
+}
+
+bool Shapes::Shape::operator<(const Shape & other) const
+{
+    return this->id < other.id;
+}
+
+bool Shapes::Shape::operator==(const Shape & other) const
+{
+    return this->id == other.id;
 }

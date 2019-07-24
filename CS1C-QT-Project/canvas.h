@@ -15,7 +15,9 @@ class canvas : public QWidget
 public:
 	explicit canvas(QWidget *parent = nullptr);
 	~canvas() override;
-	vector<Shapes::Shape*> shapesData;
+	void setPositionCoords(int x, int y, int id);
+	void setShapesData(vector<Shapes::Shape*> shapesData);
+	void loadFile();
 
 protected:
 	void paintEvent(QPaintEvent *) override;
@@ -26,8 +28,7 @@ private slots:
 private:
 	Ui::canvas *ui;
 	bool readFile;
-	int x;
-	int y;
+	vector<Shapes::Shape*> shapesData;
 };
 
 #endif // CANVAS_H

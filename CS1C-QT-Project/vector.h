@@ -68,7 +68,7 @@ public:
       \param source
       \return A reference to the source data
     */
-    vector& operator=(const vector&& source); // move assignment
+    vector& operator=(vector&& source); // move assignment
 
     //! Overloaded vector subscript operator []
     /*!
@@ -76,6 +76,7 @@ public:
       \param n an integer argument
       \return The T data stored in vector[n]
     */
+
     T& operator[] (int n); // access: return reference
 
     //! Overloaded const vector subscript operator []
@@ -230,7 +231,7 @@ inline vector<T>::vector(const vector && source) : size_v{source.size_v}, space{
 
 // Move assignment
 template<class T>
-inline vector<T> & vector<T>::operator=(const vector && source)
+inline vector<T> & vector<T>::operator=(vector && source)
 {
     delete[] elem;
     elem = source.elem;
