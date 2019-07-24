@@ -39,6 +39,12 @@ void canvas::loadFile()
 	readFile = true;
 }
 
+void canvas::saveFile()
+{
+	ShapesParser parser;
+	parser.writeShapesFile(shapesData);
+}
+
 void canvas::paintEvent(QPaintEvent *)
 {
 	QPainter painter(this);

@@ -76,5 +76,5 @@ void MainWindow::on_pushButton_load_clicked()
 
 void MainWindow::on_pushButton_save_clicked()
 {
-
+	canvas->saveFile();
 }
