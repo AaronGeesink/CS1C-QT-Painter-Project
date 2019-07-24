@@ -118,7 +118,6 @@ public:
     */
     void reserve(int newalloc); // get more space
 
-
     using iterator = T *; /*!< T pointer used as an iterator. */
     using const_iterator = const T *; /*!< T pointer used as a const iterator. */
 
@@ -166,7 +165,7 @@ public:
 private:
     //! The number of T values stored in the vector.
     int size_v;
-    //! The amount of total elements in the vector, initialized or not.
+    //! The amount of total elements in the vector, initialized with data or not.
     int space;
     //! Points to the array of elements in the vector.
     T* elem;
@@ -270,12 +269,11 @@ inline int vector<T>::capacity() const
     return space;
 }
 
-// We should probably test this one to be sure
 template<class T>
 inline void vector<T>::resize(int newsize)
 {
-    if (newsize == 0)
-        newsize = 1;
+    //if (newsize == 0)
+       // newsize = 1;
 
     T * Tptr = new T[newsize];
 
@@ -297,6 +295,8 @@ inline void vector<T>::push_back(T val)
     // If vector full, multiply the size of the vector by 2
     if (size_v == space)
     {
+        if (space == 0)
+            space = 1;
         resize(space * 2);
     }
 
@@ -316,10 +316,17 @@ inline void vector<T>::reserve(int newalloc)
             Tptr[i] = elem[i];
 
         delete[] elem;
-        T * temp = elem;
+        space = newalloc;
+
+        // Give newly allocated data to the vector
         elem = Tptr;
-        Tptr = temp;
-        delete[] Tptr;
+        Tptr = nullptr;
+
+        // Deprecated code
+//        T * temp = elem;
+//        elem = Tptr;
+//        Tptr = temp;
+//        delete[] Tptr;
     }
 }
 
@@ -355,27 +362,37 @@ inline typename vector<T>::const_iterator vector<T>::end() const
     return &elem[size_v];
 }
 
+// Insert algorithm which includes an exception handler
 template<class T>
 inline typename vector<T>::iterator vector<T>::insert(iterator p, const T & v)
 {
-    // Check if p excedes the end of the vector
-    if (p > end() || p < begin())
+    try
     {
-        exit(1);
+        // Error handle if p is not within the boundaries of the vector
+        if (p > end() || p < begin())
+        {
+            throw p;
+        }
+
+        // Increase size of vector if needed
+        if (size_v + 1 >= space)
+        {
+            if (space == 0)
+                space = 1;
+            resize(space * 2);
+        }
+
+        // Add value to the vector
+        move(p, end(), p + 1)
+        *p = v;
+        size_v++;
+        return p;
+    }
+    catch(iterator p)
+    {
+        // Debug message goes here
     }
 
-    // Increase size of vector if needed
-    if (size_v == space)
-    {
-        resize(space * 2);
-    }
-
-    // Add value to the vector
-    move(p, end(), p + 1)
-    *p = v;
-    size_v++;
-
-    return p;
 }
 
 // This function results in a memory leak. must delete the end pointer after moving all elements.
