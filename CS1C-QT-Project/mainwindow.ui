@@ -114,24 +114,6 @@
      <height>20</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuContact_Us">
-    <property name="title">
-     <string>Contact Us</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuLogin">
-    <property name="title">
-     <string>Login</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuShapes">
-    <property name="title">
-     <string>Shapes</string>
-    </property>
-   </widget>
-   <addaction name="menuContact_Us"/>
-   <addaction name="menuLogin"/>
-   <addaction name="menuShapes"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">
