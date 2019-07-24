@@ -128,7 +128,7 @@ int Shape::getId()
 }
 void Shape::setArea(double newArea)
 {
-    this->area = newArea;
+    area = newArea;
 }
 
 void Shape::setPerimeter(double newPerimeter)
