@@ -264,6 +264,9 @@ void Ellipse::draw(const int translateX, const int translateY)
 void Text::setText(const QRect& rect, const QString& text)
 {
 	this->rect = rect;
+	setXY(rect.x(),rect.y());
+	this->rect.moveTo(0,0);
+
 	this->text = text;
 }
 

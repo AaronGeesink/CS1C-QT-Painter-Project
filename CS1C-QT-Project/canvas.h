@@ -23,11 +23,12 @@ protected:
 	void paintEvent(QPaintEvent *) override;
 
 private slots:
-	void on_pushButton_load_clicked();
+	void on_pushButton_clicked();
 
 private:
 	Ui::canvas *ui;
 	bool readFile;
+	bool render;
 	vector<Shapes::Shape*> shapesData;
 };
 
