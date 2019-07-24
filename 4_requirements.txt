@@ -1,0 +1,9 @@
+General Requirements
+	-Inheritance: See shapes.h (each shape class derives from the Shape base class)
+	-Composition: The canvas class is composed of a vector of shape pointers (See canvas.h shapeData member, line 18)
+	-Exception handlers: The insert() function in vector.h has a try-throw-catch exception handler (vector.h, starting at line 369)
+	-Virtual function: The draw() function in the shapes class is a pure virtual function (See shapes.h draw function))
+	-Two overload operators:
+	-Templates: The vector class is templated
+	-Pointer: the vector class contains a pointer which points to array ov vector elements (see vector.h, line 171, T * elem)
+	-Copy constructor: the vector class contains a copy constructor (vector.h, line 48)

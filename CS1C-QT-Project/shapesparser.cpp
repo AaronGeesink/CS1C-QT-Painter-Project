@@ -7,7 +7,7 @@ ShapesParser::ShapesParser()
 vector<Shapes::Shape*>& ShapesParser::readShapesFile(QPaintDevice * device)
 {
 	// MUST CHANGE FILE PATH TO BE MORE GENERAL
-	string fileName("C:\\Users\\roverdog\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
+    string fileName("C:\\Users\\chatm\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
 
 	std::ifstream inFile;
 	inFile.open(fileName.c_str());
