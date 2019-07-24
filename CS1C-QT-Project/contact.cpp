@@ -6,6 +6,7 @@ contact::contact(QWidget *parent) :
     ui(new Ui::contact)
 {
     ui->setupUi(this);
+	ui->label->setPixmap(QPixmap(":/El Rainmakers logo (qt resize2).png"));
 }
 
 contact::~contact()

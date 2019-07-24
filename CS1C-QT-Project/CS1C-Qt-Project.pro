@@ -56,3 +56,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     El Rainmakers logo (qt resize2).png \
     shapes.txt
+
+RESOURCES += \
+    resources.qrc
