@@ -140,6 +140,16 @@ void Line::setPoints(const QPoint & pointBegin, const QPoint & pointEnd)
 	this->pointEnd.setY(pointEnd.y() - getY());
 }
 
+void Line::getPoints(int& x1, int& y1, int& x2, int& y2)
+{
+	x1 = pointBegin.x() + getX();
+	y1 = pointBegin.y() + getY();
+
+	x2 = pointEnd.x() + getX();
+	y2 = pointEnd.y() + getY();
+}
+
+
 void Line::draw(const int translateX, const int translateY)
 {
 	getQPainter()->setPen(getPen());
@@ -314,6 +324,20 @@ void Text::setAlignment(Qt::AlignmentFlag alignment)
 	this->alignment = alignment;
 }
 
+QFont Text::getFont()
+{
+	return font;
+}
+
+QString Text::getText()
+{
+	return text;
+}
+
+Qt::AlignmentFlag Text::getAlignment()
+{
+	return alignment;
+}
 
 void Shapes::Text::draw(const int translateX, const int translateY)
 {
