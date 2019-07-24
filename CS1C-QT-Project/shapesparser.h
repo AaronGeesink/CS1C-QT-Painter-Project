@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <QDebug>
+#include <QFile>
 
 class ShapesParser
 {

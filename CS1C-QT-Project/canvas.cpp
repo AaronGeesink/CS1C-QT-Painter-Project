@@ -9,6 +9,7 @@ canvas::canvas(QWidget *parent) :
 {
 	ui->setupUi(this);
 	readFile = false;
+	render = false;
 }
 
 canvas::~canvas()
@@ -51,17 +52,20 @@ void canvas::paintEvent(QPaintEvent *)
 		//update();
 	}
 
-	for (Shapes::Shape* shape : shapesData)
+	if (render)
 	{
-		shape->draw(shape->getX(), shape->getY());
-		//shape->draw(0,0);
-		qInfo() << shape->getId();
+		for (Shapes::Shape* shape : shapesData)
+		{
+			shape->draw(shape->getX(), shape->getY());
+			//shape->draw(0,0);
+			qInfo() << shape->getId();
+		}
 	}
 
 	painter.end();
 }
 
-void canvas::on_pushButton_load_clicked()
+void canvas::on_pushButton_clicked()
 {
-	readFile = true;
+	render = !render;
 }
