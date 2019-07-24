@@ -2,5 +2,6 @@
  <qresource>
      <file>El Rainmakers logo (qt resize2).png</file>
      <file>shapes.txt</file>
+     <file>test.txt</file>
  </qresource>
  </RCC>

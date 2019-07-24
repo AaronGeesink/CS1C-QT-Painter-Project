@@ -158,9 +158,59 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPainter * painter)
 	return loadedShapes;
 }
 
-void ShapesParser::writeShapesFile()
+void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 {
+//	QFile file(":/test.txt");
+//		if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+//		{
+//			qInfo() << "outFile failed to load.";
+//			exit(1);
+//		}
+	string fileName("C:\\Users\\roverdog\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\test.txt");
 
+	std::ofstream outFile;
+	outFile.open(fileName.c_str(), std::ofstream::out | std::ofstream::trunc);
+
+	if (outFile.fail())
+	{
+		// exit if file not found. might use exception handling for this.
+		qInfo() << "outFile failed to load.";
+		exit(1);
+	}
+
+	for (Shapes::Shape* shape : shapesData)
+	{
+		qInfo() << "writing line";
+		if (shape->getShape() == Shapes::Shape::ShapeType::Line)
+		{
+			outFile << "line" << '\n';
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Polyline)
+		{
+			outFile << "polyline" << '\n';
+
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Polygon)
+		{
+			outFile << "polygon" << '\n';
+
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Rectangle)
+		{
+			outFile << "rectangle" << '\n';
+
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Ellipse)
+		{
+			outFile << "ellipse" << '\n';
+
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Text)
+		{
+			outFile << "text" << '\n';
+
+		}
+	}
 }
 
 void ShapesParser::removeSpaces(string &str)

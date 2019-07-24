@@ -15,7 +15,7 @@ public:
 
 	// MUST CHANGE FILE PATH IN readShapesFile() TO BE MORE GENERAL
 	vector<Shapes::Shape*> readShapesFile(QPainter* painter);
-	void writeShapesFile();
+	void writeShapesFile(vector<Shapes::Shape*> shapesData);
 
 	void parseLine(Shapes::Line* pLine, std::ifstream& inFile);
 	void parsePolyline(Shapes::Polyline* pPolyline, std::ifstream& inFile);
@@ -46,6 +46,7 @@ private:
 
 	int id;
 	string line;
+	QString qLine;
 	string setting;
 	string value;
 
