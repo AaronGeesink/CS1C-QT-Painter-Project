@@ -26,7 +26,6 @@ void canvas::setPositionCoords(int x, int y, int id)
 			shape->setXY(x,y);
 		}
 	}
-	//repaint();
 }
 
 void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
@@ -55,7 +54,6 @@ void canvas::paintEvent(QPaintEvent *)
 		ShapesParser parser;
 		shapesData = parser.readShapesFile(painterPtr);
 		readFile = false;
-		//update();
 	}
 
 	if (render)
@@ -67,8 +65,6 @@ void canvas::paintEvent(QPaintEvent *)
 			qInfo() << shape->getId();
 		}
 	}
-
-	painter.end();
 }
 
 void canvas::on_pushButton_clicked()
