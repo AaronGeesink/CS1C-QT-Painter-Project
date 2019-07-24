@@ -30,7 +30,7 @@ BrushStyle: SolidPattern
 
 ShapeId: 4
 ShapeType: Rectangle
-ShapeDimensions: 0, 0, 0, 0
+ShapeDimensions: 20, 200, 170, 100
 PenColor: color
 PenWidth: 0
 PenStyle: DashLine
@@ -40,8 +40,8 @@ BrushColor: color
 BrushStyle: VerPattern
 
 ShapeId: 5
-ShapeType: Rectangle
-ShapeDimensions: 0, 0, 0, 0
+ShapeType: Square
+ShapeDimensions: 250, 150, 200
 PenColor: color
 PenWidth: 0
 PenStyle: SolidLine
@@ -52,7 +52,7 @@ BrushStyle: HorPattern
 
 ShapeId: 6
 ShapeType: Ellipse
-ShapeDimensions: 0, 0, 0, 0
+ShapeDimensions: 520, 200, 170, 100
 PenColor: color
 PenWidth: 12
 PenStyle: SolidLine
@@ -62,8 +62,8 @@ BrushColor: color
 BrushStyle: NoBrush
 
 ShapeId: 7
-ShapeType: Ellipse
-ShapeDimensions: 0, 0, 0, 0
+ShapeType: Circle
+ShapeDimensions: 750, 150, 200
 PenColor: color
 PenWidth: 12
 PenStyle: SolidLine
@@ -74,7 +74,7 @@ BrushStyle: SolidPattern
 
 ShapeId: 8
 ShapeType: Text
-ShapeDimensions: 0, 0, 0, 0
+ShapeDimensions: 250, 425, 500, 50
 TextString: Class Project 2 - 2D Graphics Modeler
 TextColor: color
 TextAlignment: alignment

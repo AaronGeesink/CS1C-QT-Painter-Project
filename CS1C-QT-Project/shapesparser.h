@@ -43,7 +43,7 @@ public:
 	string writePenStyle(Qt::PenStyle penStyle);
 	string writeCapStyle(Qt::PenCapStyle cap);
 	string writeJoinStyle(Qt::PenJoinStyle join);
-	string writeBrushStyle(Qt::BrushStyle brishStyle);
+	string writeBrushStyle(Qt::BrushStyle brushStyle);
 
 	string writeAlignment(Qt::AlignmentFlag alignment);
 	string writeFamily(QString family);

@@ -192,7 +192,7 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 			pLine->getPoints(x1,y1,x2,y2);
 			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
 
-			QColor color(pLine->getPen().color());
+			//QColor color(pLine->getPen().color());
 			outFile << "PenColor: " << "color" << '\n';
 
 			outFile << "PenWidth: " << pLine->getPen().width() << '\n';
@@ -212,7 +212,7 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 			//pPolyLine->getPoints(x1,y1,x2,y2);
 			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
 
-			QColor color(pPolyLine->getPen().color());
+			//QColor color(pPolyLine->getPen().color());
 			outFile << "PenColor: " << "color" << '\n';
 
 			outFile << "PenWidth: " << pPolyLine->getPen().width() << '\n';
@@ -231,7 +231,7 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 			//pPolyLine->getPoints(x1,y1,x2,y2);
 			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
 
-			QColor color(pPolygon->getPen().color());
+			//QColor color(pPolygon->getPen().color());
 			outFile << "PenColor: " << "color" << '\n';
 
 			outFile << "PenWidth: " << pPolygon->getPen().width() << '\n';
@@ -249,12 +249,22 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 			Shapes::Rectangle* pRectangle = dynamic_cast<Shapes::Rectangle*>(shape);
 
 			outFile << "ShapeId: " << pRectangle->getId() << '\n';
-			outFile << "ShapeType: Rectangle\n";
-			int x1{0}, y1{0}, x2{0}, y2{0};
-			//pPolyLine->getPoints(x1,y1,x2,y2);
-			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
 
-			QColor color(pRectangle->getPen().color());
+			if (pRectangle->getRect().width() == pRectangle->getRect().height())
+			{
+				outFile << "ShapeType: Square\n";
+				outFile << "ShapeDimensions: " << pRectangle->getX() << ", " << pRectangle->getY()
+						<< ", " << pRectangle->getRect().width() << '\n';
+			}
+
+			else
+			{
+				outFile << "ShapeType: Rectangle\n";
+				outFile << "ShapeDimensions: " << pRectangle->getX() << ", " << pRectangle->getY()
+						<< ", " << pRectangle->getRect().width() << ", " << pRectangle->getRect().height() << '\n';
+			}
+
+			//QColor color(pRectangle->getPen().color());
 			outFile << "PenColor: " << "color" << '\n';
 
 			outFile << "PenWidth: " << pRectangle->getPen().width() << '\n';
@@ -272,12 +282,22 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 			Shapes::Ellipse* pEllipse = dynamic_cast<Shapes::Ellipse*>(shape);
 
 			outFile << "ShapeId: " << pEllipse->getId() << '\n';
-			outFile << "ShapeType: Ellipse\n";
-			int x1{0}, y1{0}, x2{0}, y2{0};
-			//pPolyLine->getPoints(x1,y1,x2,y2);
-			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
 
-			QColor color(pEllipse->getPen().color());
+			if (pEllipse->getRect().width() == pEllipse->getRect().height())
+			{
+				outFile << "ShapeType: Circle\n";
+				outFile << "ShapeDimensions: " << pEllipse->getX() << ", " << pEllipse->getY()
+						<< ", " << pEllipse->getRect().width() << '\n';
+			}
+
+			else
+			{
+			outFile << "ShapeType: Ellipse\n";
+			outFile << "ShapeDimensions: " << pEllipse->getX() << ", " << pEllipse->getY()
+					<< ", " << pEllipse->getRect().width() << ", " << pEllipse->getRect().height() << '\n';
+			}
+
+			//QColor color(pEllipse->getPen().color());
 			outFile << "PenColor: " << "color" << '\n';
 
 			outFile << "PenWidth: " << pEllipse->getPen().width() << '\n';
@@ -296,9 +316,9 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 
 			outFile << "ShapeId: " << pText->getId() << '\n';
 			outFile << "ShapeType: Text\n";
-			int x1{0}, y1{0}, x2{0}, y2{0};
-			//pPolyLine->getPoints(x1,y1,x2,y2);
-			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
+			outFile << "ShapeDimensions: " << pText->getX() << ", " << pText->getY()
+					<< ", " << pText->getRect().width() << ", " << pText->getRect().height() << '\n';
+
 			outFile << "TextString: " << pText->getText().toUtf8().constData() << '\n';
 
 			outFile << "TextColor: " << "color" << '\n';

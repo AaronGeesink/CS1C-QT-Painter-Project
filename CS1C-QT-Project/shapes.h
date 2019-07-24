@@ -382,7 +382,11 @@ public:
       \param translateX the new x coordinate of the Rectangle
       \param translateY the new y coordinate of the Rectangle
     */
+
+	QRect getRect();
+
 	void draw(const int translateX = 0, const int translateY = 0) override;
+
 private:
     //! The QRect data in the Rectangle object
 	QRect rect;
@@ -419,6 +423,9 @@ public:
       \param translateX the new x coordinate of the Ellipse
       \param translateY the new y coordinate of the Ellipse
     */
+
+	QRect getRect();
+
 	void draw(const int translateX = 0, const int translateY = 0) override;
 private:
     //! The QRect data in the Ellipse object
@@ -523,6 +530,8 @@ public:
 	QString getText();
 
 	Qt::AlignmentFlag getAlignment();
+
+	QRect getRect();
 
 	void draw(const int translateX = 0, const int translateY = 0) override;
 

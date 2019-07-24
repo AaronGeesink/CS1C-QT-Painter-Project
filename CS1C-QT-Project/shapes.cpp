@@ -230,6 +230,11 @@ void Rectangle::setRectangle(const QRect & rect)
 	this->rect.moveTo(0,0);
 }
 
+QRect Rectangle::getRect()
+{
+	return rect;
+}
+
 void Rectangle::draw(const int translateX, const int translateY)
 {
 	getQPainter()->setPen(getPen());
@@ -252,6 +257,11 @@ void Ellipse::setEllipse(const QRect & rect)
 	this->rect = rect;
 	setXY(rect.x(),rect.y());
 	this->rect.moveTo(0,0);
+}
+
+QRect Ellipse::getRect()
+{
+	return rect;
 }
 
 void Ellipse::draw(const int translateX, const int translateY)
@@ -302,6 +312,8 @@ void Text::setFont(const QString& family)
 void Text::setRect(const QRect& rect)
 {
 	this->rect = rect;
+	setXY(rect.x(),rect.y());
+	this->rect.moveTo(0,0);
 }
 
 void Text::setWeight(QFont::Weight weight)
@@ -337,6 +349,11 @@ QString Text::getText()
 Qt::AlignmentFlag Text::getAlignment()
 {
 	return alignment;
+}
+
+QRect Text::getRect()
+{
+	return rect;
 }
 
 void Shapes::Text::draw(const int translateX, const int translateY)
