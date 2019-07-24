@@ -141,14 +141,13 @@ public:
     */
 	void setXY(int x, int y);
 
+	Shape(const Shape&) = delete;
+	Shape& operator=(const Shape&) = delete;
+
     //! Returns the x coordinate of the shape to the client
     /*!
       \return the x coordinate of the shape
     */
-
-	Shape(const Shape&) = delete;
-	Shape& operator=(const Shape&) = delete;
-
 	int getX();
 
     //! Returns the y coordinate of the shape to the client
@@ -343,6 +342,9 @@ public:
     */
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
+    void setArea();
+    void setPerimeter();
+
 private:
 	project::vector<QPoint> points;
 };
@@ -380,6 +382,10 @@ public:
       \param translateY the new y coordinate of the Rectangle
     */
 	void draw(const int translateX = 0, const int translateY = 0) override;
+
+    void setArea();
+    void setPerimeter();
+
 private:
     //! The QRect data in the Rectangle object
 	QRect rect;
@@ -387,7 +393,7 @@ private:
 
 //! Ellipse derived class
 /*!
-  Esllipse class that derives from Shape. Specifies data unique to rendering Ellipse objects.
+  Ellipse class that derives from Shape. Specifies data unique to rendering Ellipse objects.
 */
 class Ellipse : public Shape
 {
@@ -417,6 +423,10 @@ public:
       \param translateY the new y coordinate of the Ellipse
     */
 	void draw(const int translateX = 0, const int translateY = 0) override;
+
+    void setArea();
+    void setPerimeter();
+
 private:
     //! The QRect data in the Ellipse object
 	QRect rect;

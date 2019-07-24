@@ -126,6 +126,15 @@ int Shape::getId()
 {
 	return id;
 }
+void Shape::setArea(double newArea)
+{
+    this->area = newArea;
+}
+
+void Shape::setPerimeter(double newPerimeter)
+{
+    perimeter = newPerimeter;
+}
 
 void Line::setPoints(const QPoint & pointBegin, const QPoint & pointEnd)
 {
@@ -213,11 +222,23 @@ void Polygon::draw(const int translateX, const int translateY)
 
 }
 
+void Polygon::setArea()
+{
+
+}
+
+void Polygon::setPerimeter()
+{
+
+}
+
 void Rectangle::setRectangle(const QRect & rect)
 {
 	this->rect = rect;
 	setXY(rect.x(),rect.y());
 	this->rect.moveTo(0,0);
+    Rectangle::setArea();
+    Rectangle::setPerimeter();
 }
 
 void Rectangle::draw(const int translateX, const int translateY)
@@ -235,6 +256,18 @@ void Rectangle::draw(const int translateX, const int translateY)
 	getQPainter()->drawText(rect, text);
 
 	getQPainter()->restore();
+}
+
+void Rectangle::setArea()
+{
+    double newArea = (rect.width() * rect.height());
+    Shape::setArea(newArea);
+}
+
+void Rectangle::setPerimeter()
+{
+    double newPerimeter = (2 * rect.width() + 2 * rect.height());
+    Shape::setPerimeter(newPerimeter);
 }
 
 void Ellipse::setEllipse(const QRect & rect)
@@ -259,6 +292,16 @@ void Ellipse::draw(const int translateX, const int translateY)
 	getQPainter()->drawText(rect, text);
 
 	getQPainter()->restore();
+}
+
+void Ellipse::setArea()
+{
+
+}
+
+void Ellipse::setPerimeter()
+{
+
 }
 
 void Text::setText(const QRect& rect, const QString& text)
