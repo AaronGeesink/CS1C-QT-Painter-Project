@@ -163,6 +163,21 @@ public:
     */
     iterator erase(iterator p); // remove element pointed to by p
 
+    void selection_sort(T * begin, T * end, bool(*comparison)(T *, T *))
+    {
+        // Step through each element of the array
+        for (T * start = begin; start < end; start++)
+        {
+            // T * best = start;
+            // Look for smallest/largest element remaining in the array
+            for (T * current  = start + 1; current < end; current++)
+            {
+                if (comparison(current, start)) // COMPARISON DONE HERE
+                    std::swap(current, start);
+            }
+        }
+    }
+
 private:
     //! The number of T values stored in the vector.
     int size_v;

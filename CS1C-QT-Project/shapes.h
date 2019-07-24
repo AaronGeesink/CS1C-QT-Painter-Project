@@ -27,7 +27,7 @@ public:
     /*!
       Initializes a shape object with default values and a pointer to a QPainter object
     */
-	Shape(QPainter* painter = nullptr, int id = -1, ShapeType shape = ShapeType::NoShape);
+    Shape(QPainter* painter = nullptr, int id = -1, double area = 0, double perimeter = 0, ShapeType shape = ShapeType::NoShape);
 
     //! shape destructor
     /*!
@@ -184,6 +184,21 @@ public:
     */
     bool operator==(const Shape&) const;
 
+    bool sortID(Shape * x, Shape * y)
+    {
+        return (x->id > y->id);
+    }
+
+    bool sortPerimeter(Shape * x, Shape * y)
+    {
+        return (x->perimeter > y->perimeter);
+    }
+
+    bool sortArea(Shape * x, Shape * y)
+    {
+        return (x->area > y->area);
+    }
+
 protected:
     //! Returns a pointer to the QPainter object in the shape
     /*!
@@ -225,7 +240,7 @@ public:
     /*!
       Initializes a Line object with default values and Shape data
     */
-	Line(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Line} {}
+    Line(QPainter* painter = nullptr, int id = -1, double area = 0, double perimeter = 0) : Shape{painter, id, area, perimeter, ShapeType::Line} {}
 
     //! Line destructor
     /*!
@@ -268,7 +283,7 @@ public:
     /*!
       Initializes a Polyline object with default values and Shape data
     */
-	Polyline(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Polyline} {}
+    Polyline(QPainter* painter = nullptr, int id = -1, double area = 0, double perimeter = 0) : Shape{painter, id, area, perimeter, ShapeType::Polyline} {}
 
     //! Polyline destructor
     /*!
@@ -306,7 +321,7 @@ public:
     /*!
       Initializes a Polygon object with default values and Shape data
     */
-	Polygon(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Polygon} {}
+    Polygon(QPainter* painter = nullptr, int id = -1, double area = 0, double perimeter = 0) : Shape{painter, id, area, perimeter, ShapeType::Polygon} {}
 
     //! Polygon destructor
     /*!
@@ -344,7 +359,7 @@ public:
     /*!
       Initializes a Rectangle object with default values and Shape data
     */
-	Rectangle(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Rectangle} {}
+    Rectangle(QPainter* painter = nullptr, int id = -1, double area = 0, double perimeter = 0) : Shape{painter, id, area, perimeter, ShapeType::Rectangle} {}
 
     //! Rectangle destructor
     /*!
@@ -381,7 +396,7 @@ public:
     /*!
       Initializes an Ellipse object with default values and Shape data
     */
-	Ellipse(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Ellipse} {}
+    Ellipse(QPainter* painter = nullptr, int id = -1, double area = 0, double perimeter = 0) : Shape{painter, id, area, perimeter, ShapeType::Ellipse} {}
 
     //! Ellipse destructor
     /*!
@@ -418,7 +433,7 @@ public:
     /*!
       Initializes a Text object with default values and Shape data
     */
-	Text(QPainter* painter = nullptr, int id = -1) : Shape{painter, id, ShapeType::Text} {}
+    Text(QPainter* painter = nullptr, int id = -1, double area = 0, double perimeter = 0) : Shape{painter, id, area, perimeter, ShapeType::Text} {}
 
     //! Text destructor
     /*!
