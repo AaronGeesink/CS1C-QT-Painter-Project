@@ -178,37 +178,138 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 		exit(1);
 	}
 
+	outFile << '\n';
 	for (Shapes::Shape* shape : shapesData)
 	{
 		qInfo() << "writing line";
 		if (shape->getShape() == Shapes::Shape::ShapeType::Line)
 		{
-			outFile << "line" << '\n';
+			Shapes::Line* pLine = dynamic_cast<Shapes::Line*>(shape);
+
+			outFile << "ShapeId: " << pLine->getId() << '\n';
+			outFile << "ShapeType: Line\n";
+			int x1, y1, x2, y2;
+			pLine->getPoints(x1,y1,x2,y2);
+			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
+
+			QColor color(pLine->getPen().color());
+			outFile << "PenColor: " << "color" << '\n';
+
+			outFile << "PenWidth: " << pLine->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pLine->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pLine->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pLine->getPen().joinStyle()) << '\n';
+
+			outFile << '\n';
 		}
 		else if (shape->getShape() == Shapes::Shape::ShapeType::Polyline)
 		{
-			outFile << "polyline" << '\n';
+			Shapes::Polyline* pPolyLine = dynamic_cast<Shapes::Polyline*>(shape);
 
+			outFile << "ShapeId: " << pPolyLine->getId() << '\n';
+			outFile << "ShapeType: Polyline\n";
+			int x1{0}, y1{0}, x2{0}, y2{0};
+			//pPolyLine->getPoints(x1,y1,x2,y2);
+			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
+
+			QColor color(pPolyLine->getPen().color());
+			outFile << "PenColor: " << "color" << '\n';
+
+			outFile << "PenWidth: " << pPolyLine->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pPolyLine->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pPolyLine->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pPolyLine->getPen().joinStyle()) << '\n';
+
+			outFile << '\n';
 		}
 		else if (shape->getShape() == Shapes::Shape::ShapeType::Polygon)
 		{
-			outFile << "polygon" << '\n';
+			Shapes::Polygon* pPolygon = dynamic_cast<Shapes::Polygon*>(shape);
+			outFile << "ShapeId: " << pPolygon->getId() << '\n';
+			outFile << "ShapeType: Polygon\n";
+			int x1{0}, y1{0}, x2{0}, y2{0};
+			//pPolyLine->getPoints(x1,y1,x2,y2);
+			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
 
+			QColor color(pPolygon->getPen().color());
+			outFile << "PenColor: " << "color" << '\n';
+
+			outFile << "PenWidth: " << pPolygon->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pPolygon->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pPolygon->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pPolygon->getPen().joinStyle()) << '\n';
+
+			outFile << "BrushColor: " << "color" << '\n';
+			outFile << "BrushStyle: " << writeBrushStyle(pPolygon->getBrush().style()) << '\n';
+
+			outFile << '\n';
 		}
 		else if (shape->getShape() == Shapes::Shape::ShapeType::Rectangle)
 		{
-			outFile << "rectangle" << '\n';
+			Shapes::Rectangle* pRectangle = dynamic_cast<Shapes::Rectangle*>(shape);
 
+			outFile << "ShapeId: " << pRectangle->getId() << '\n';
+			outFile << "ShapeType: Rectangle\n";
+			int x1{0}, y1{0}, x2{0}, y2{0};
+			//pPolyLine->getPoints(x1,y1,x2,y2);
+			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
+
+			QColor color(pRectangle->getPen().color());
+			outFile << "PenColor: " << "color" << '\n';
+
+			outFile << "PenWidth: " << pRectangle->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pRectangle->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pRectangle->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pRectangle->getPen().joinStyle()) << '\n';
+
+			outFile << "BrushColor: " << "color" << '\n';
+			outFile << "BrushStyle: " << writeBrushStyle(pRectangle->getBrush().style()) << '\n';
+
+			outFile << '\n';
 		}
 		else if (shape->getShape() == Shapes::Shape::ShapeType::Ellipse)
 		{
-			outFile << "ellipse" << '\n';
+			Shapes::Ellipse* pEllipse = dynamic_cast<Shapes::Ellipse*>(shape);
 
+			outFile << "ShapeId: " << pEllipse->getId() << '\n';
+			outFile << "ShapeType: Ellipse\n";
+			int x1{0}, y1{0}, x2{0}, y2{0};
+			//pPolyLine->getPoints(x1,y1,x2,y2);
+			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
+
+			QColor color(pEllipse->getPen().color());
+			outFile << "PenColor: " << "color" << '\n';
+
+			outFile << "PenWidth: " << pEllipse->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pEllipse->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pEllipse->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pEllipse->getPen().joinStyle()) << '\n';
+
+			outFile << "BrushColor: " << "color" << '\n';
+			outFile << "BrushStyle: " << writeBrushStyle(pEllipse->getBrush().style()) << '\n';
+
+			outFile << '\n';
 		}
 		else if (shape->getShape() == Shapes::Shape::ShapeType::Text)
 		{
-			outFile << "text" << '\n';
+			Shapes::Text* pText = dynamic_cast<Shapes::Text*>(shape);
 
+			outFile << "ShapeId: " << pText->getId() << '\n';
+			outFile << "ShapeType: Text\n";
+			int x1{0}, y1{0}, x2{0}, y2{0};
+			//pPolyLine->getPoints(x1,y1,x2,y2);
+			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
+			outFile << "TextString: " << pText->getText().toUtf8().constData() << '\n';
+
+			outFile << "TextColor: " << "color" << '\n';
+
+			outFile << "TextAlignment: " << /*writeAlignment(pText->getAlignment())*/ "alignment" << '\n';
+			outFile << "TextPointSize: " << pText->getFont().pointSize() << '\n';
+			outFile << "TextFontFamily: " << writeFamily(pText->getFont().family()) << '\n';
+			outFile << "TextFontStyle: " << writeFontStyle(pText->getFont().style()) << '\n';
+			outFile << "TextFontWeight: " << /*writeFontWeight(pText->getFont().weight())*/ "weight" << '\n';
+
+			outFile << '\n';
 		}
 	}
 }
@@ -887,4 +988,147 @@ QFont::Weight ShapesParser::parseWeight(string& weight)
 		default:
 			return QFont::Weight::Normal;
 	}
+}
+
+string writeColor(const QColor color)
+{
+
+	if ( color == QColor(Qt::GlobalColor::white))
+		return "white";
+
+	else if ( color == QColor(Qt::GlobalColor::blue))
+		return "blue";
+
+	else if ( color == QColor(Qt::GlobalColor::black))
+		return "black";
+
+	else if ( color == QColor(Qt::GlobalColor::red))
+		return "red";
+
+	else if ( color == QColor(Qt::GlobalColor::green))
+		return "green";
+
+	else if ( color == QColor(Qt::GlobalColor::gray))
+		return "gray";
+
+	else if ( color == QColor(Qt::GlobalColor::cyan))
+		return "cyan";
+
+	else if ( color == QColor(Qt::GlobalColor::magenta))
+		return "magenta";
+
+	else if ( color == QColor(Qt::GlobalColor::yellow))
+		return "yellow";
+
+	else
+		return "black";
+}
+
+string ShapesParser::writePenStyle(Qt::PenStyle penStyle)
+{
+	if (penStyle == Qt::PenStyle::NoPen)
+		return "NoPen";
+	else if (penStyle == Qt::PenStyle::SolidLine)
+		return "SolidLine";
+	if (penStyle == Qt::PenStyle::DashLine)
+		return "DashLine";
+	else if (penStyle == Qt::PenStyle::DotLine)
+		return "DotLine";
+	if (penStyle == Qt::PenStyle::DashDotLine)
+		return "DashDotLine";
+	else if (penStyle == Qt::PenStyle::SolidLine)
+		return "DashDotDotLine";
+	else
+		return "SolidLine";
+}
+string ShapesParser::writeCapStyle(Qt::PenCapStyle cap)
+{
+	if (cap == Qt::PenCapStyle::FlatCap)
+		return "FlatCap";
+	else if (cap == Qt::PenCapStyle::SquareCap)
+		return "SquareCap";
+	else if (cap == Qt::PenCapStyle::RoundCap)
+		return "RoundCap";
+	else
+		return "FlatCap";
+}
+
+string ShapesParser::writeJoinStyle(Qt::PenJoinStyle join)
+{
+	if (join == Qt::PenJoinStyle::MiterJoin)
+		return "MiterJoin";
+	else if (join == Qt::PenJoinStyle::BevelJoin)
+		return "BevelJoin";
+	else if (join == Qt::PenJoinStyle::RoundJoin)
+		return "RoundJoin";
+	else
+		return "MiterJoin";
+}
+
+string ShapesParser::writeBrushStyle(Qt::BrushStyle brushStyle)
+{
+	if (brushStyle == Qt::BrushStyle::SolidPattern)
+		return "SolidPattern";
+	else if (brushStyle == Qt::BrushStyle::HorPattern)
+		return "HorPattern";
+	else if (brushStyle == Qt::BrushStyle::VerPattern)
+		return "VerPattern";
+	else if (brushStyle == Qt::BrushStyle::NoBrush)
+		return "NoBrush";
+	else
+		return "SolidPattern";
+}
+
+string writeAlignment(Qt::AlignmentFlag alignment)
+{
+	if (alignment == Qt::AlignmentFlag::AlignLeft)
+		return "AlignLeft";
+	else if (alignment == Qt::AlignmentFlag::AlignRight)
+		return "AlignRight";
+	else if (alignment == Qt::AlignmentFlag::AlignTop)
+		return "AlignTop";
+	else if (alignment == Qt::AlignmentFlag::AlignBottom)
+		return "AlignBottom";
+	else if (alignment == Qt::AlignmentFlag::AlignCenter)
+		return "AlignCenter";
+	else
+		return "AlignCenter";
+}
+
+string ShapesParser::writeFamily(QString family)
+{
+	if (family == "Comic Sans MS")
+		return "Comic Sans MS";
+	else if (family == "Courier")
+		return "Courier";
+	else if (family == "Helvetica")
+		return "Helvetica";
+	else if (family == "Times")
+		return "Times";
+}
+
+string ShapesParser::writeFontStyle(QFont::Style style)
+{
+	if (style == QFont::Style::StyleNormal)
+		return "StyleNormal";
+	else if (style == QFont::Style::StyleItalic)
+		return "StyleItalic";
+	else if (style == QFont::Style::StyleOblique)
+		return "StyleOblique";
+	else
+		return "StyleNormal";
+}
+
+string writeFontWeight(QFont::Weight weight)
+{
+	if (weight == 0)
+		return "Thin";
+	else if (weight == 25)
+		return "Light";
+	else if (weight == 50)
+		return "Normal";
+	else if (weight == 75)
+		return "Bold";
+	else
+		return "Normal";
 }

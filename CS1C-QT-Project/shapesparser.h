@@ -39,6 +39,17 @@ public:
 	QFont::Style parseTextStyle(string& textStyle);
 	QFont::Weight parseWeight(string& weight);
 
+	string writeColor(const QColor& color);
+	string writePenStyle(Qt::PenStyle penStyle);
+	string writeCapStyle(Qt::PenCapStyle cap);
+	string writeJoinStyle(Qt::PenJoinStyle join);
+	string writeBrushStyle(Qt::BrushStyle brishStyle);
+
+	string writeAlignment(Qt::AlignmentFlag alignment);
+	string writeFamily(QString family);
+	string writeFontStyle(QFont::Style style);
+	string writeFontWeight(int weight);
+
 	void removeSpaces(string& str);
 
 private:

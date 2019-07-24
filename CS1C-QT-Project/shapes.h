@@ -261,7 +261,10 @@ public:
       \param translateX the new x coordinate of the Line object
       \param translateY the new y coordinate of the Line object
     */
+	void getPoints(int& x1, int& y1, int& x2, int& y2);
+
 	void draw(const int translateX = 0, const int translateY = 0) override;
+
 
 private:
     //! The start of the line
@@ -514,6 +517,13 @@ public:
       \param translateX the new x coordinate of the Text
       \param translateY the new y coordinate of the Text
     */
+
+	QFont getFont();
+
+	QString getText();
+
+	Qt::AlignmentFlag getAlignment();
+
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
