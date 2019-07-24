@@ -291,3 +291,13 @@ void Shapes::Text::draw(const int translateX, const int translateY)
 	getQPainter()->restore();
 
 }
+
+bool Shapes::Shape::operator<(const Shape & other) const
+{
+    return this->id < other.id;
+}
+
+bool Shapes::Shape::operator==(const Shape & other) const
+{
+    return this->id == other.id;
+}

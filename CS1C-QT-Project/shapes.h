@@ -45,6 +45,8 @@ public:
 	int getId();
 
 	virtual void draw(const int translateX, const int translateY) = 0;
+    bool operator<(const Shape&) const;
+    bool operator==(const Shape&) const;
 
 protected:
 	QPainter* getQPainter();
@@ -54,7 +56,9 @@ private:
 
 	int x {0};
 	int y {0};
-	int id;
+    int id;
+    double area;
+    double perimeter;
 	ShapeType shape;
 	QPen pen;
 	QBrush brush;
