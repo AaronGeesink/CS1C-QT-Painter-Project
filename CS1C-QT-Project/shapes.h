@@ -145,6 +145,10 @@ public:
     /*!
       \return x the x coordinate of the shape
     */
+
+	Shape(const Shape&) = delete;
+	Shape& operator=(const Shape&) = delete;
+
 	int getX();
 	int getY();
 	int getId();

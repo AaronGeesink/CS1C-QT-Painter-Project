@@ -1,5 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
  <qresource>
      <file>El Rainmakers logo (qt resize2).png</file>
+     <file>shapes.txt</file>
  </qresource>
  </RCC>
