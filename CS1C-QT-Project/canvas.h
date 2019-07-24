@@ -15,7 +15,7 @@ class canvas : public QWidget
 public:
 	explicit canvas(QWidget *parent = nullptr);
 	~canvas() override;
-	vector<Shapes::Shape*> shapesData;
+    vector<Shapes::Shape*> shapesData; //canvas class is composed of a vector of shape pointers
 
 protected:
 	void paintEvent(QPaintEvent *) override;

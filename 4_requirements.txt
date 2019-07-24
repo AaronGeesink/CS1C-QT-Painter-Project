@@ -3,7 +3,20 @@ General Requirements
 	-Composition: The canvas class is composed of a vector of shape pointers (See canvas.h shapeData member, line 18)
 	-Exception handlers: The insert() function in vector.h has a try-throw-catch exception handler (vector.h, starting at line 369)
 	-Virtual function: The draw() function in the shapes class is a pure virtual function (See shapes.h draw function))
-	-Two overload operators:
+	-Two overload operators: Located in shapes.h, shape class
 	-Templates: The vector class is templated
-	-Pointer: the vector class contains a pointer which points to array ov vector elements (see vector.h, line 171, T * elem)
+	-Pointer: the vector class contains a pointer which points to an array of vector elements (see vector.h, line 171, T * elem)
 	-Copy constructor: the vector class contains a copy constructor (vector.h, line 48)
+
+Project Requirements
+	#2: Click the "Contact Us" button in the program to view team name and logo)
+	#3: Click "Load File" in the program to render graphics objects.
+	    The rendering area can be resized by resizing program the window.
+	#4 The canvas class contains shape data for all shapes being rendered from a shape file.
+	   (see canvas.h & canvas.cpp, which read from shapes.txt)
+	#5 Shapes being rendered can be moved in the program by inputing the x and y coordinates,
+	   as well as the id of the shape being moved, and then clicking move.
+	   The mainwindow class reads in the coordinates from the user, and gives that data to the canvas
+	   class in order to obtain the rendered shape data, and the canvas class assigns the data w/ the new
+	   coordinates to each shape using the setX and setY functions. (see canvas.h, setPositionCoords function).
+	 #10 
