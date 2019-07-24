@@ -2,8 +2,8 @@
 
 using namespace Shapes;
 
-Shape::Shape(QPainter* painter, int id, ShapeType shape)
-	: qpainter{painter}, id{id}, shape{shape}
+Shape::Shape(QPainter* painter, int id, double area, double perimeter, ShapeType shape)
+    : qpainter{painter}, id{id}, area{area}, perimeter{perimeter}, shape{shape}
 {
 	pen = Qt::SolidLine;
 	brush = Qt::NoBrush;
