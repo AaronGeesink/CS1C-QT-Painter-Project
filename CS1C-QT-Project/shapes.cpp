@@ -143,9 +143,9 @@ void Line::draw(const int translateX, const int translateY)
 
 	getQPainter()->drawLine(pointBegin, pointEnd);
 
-//	getQPainter()->setFont();
-//	getQPainter()->drawText(QPoint(translateX,translateY), QString::number(getId()));
-//	getQPainter()->drawText(rect, Qt::AlignCenter, tr("Qt\nProject"));
+	getQPainter()->translate(-20,-30);
+	QString text = "id: " + QString::number( getId() );
+	getQPainter()->drawText(pointBegin, text);
 
 	getQPainter()->restore();
 }
@@ -165,8 +165,9 @@ void Polyline::draw(const int translateX, const int translateY)
 
 	getQPainter()->drawPolyline(points.begin(), points.size());
 
-	//defaultStyle();
-	//getQPainter()->drawText(QPoint(translateX,translateY), QString::number(getId()));
+	getQPainter()->translate(-20,-30);
+	QString text = "id: " + QString::number( getId() );
+	getQPainter()->drawText(points[0], text);
 
 	getQPainter()->restore();
 }
@@ -187,6 +188,10 @@ void Polygon::draw(const int translateX, const int translateY)
 
 	getQPainter()->drawPolygon(points.begin(), points.size());
 
+	getQPainter()->translate(-20,-30);
+	QString text = "id: " + QString::number( getId() );
+	getQPainter()->drawText(points[0], text);
+
 	getQPainter()->restore();
 }
 
@@ -205,6 +210,10 @@ void Rectangle::draw(const int translateX, const int translateY)
 
 	getQPainter()->drawRect(rect);
 
+	getQPainter()->translate(-20,-30);
+	QString text = "id: " + QString::number( getId() );
+	getQPainter()->drawText(rect, text);
+
 	getQPainter()->restore();
 }
 
@@ -222,6 +231,10 @@ void Ellipse::draw(const int translateX, const int translateY)
 	getQPainter()->translate(translateX, translateY);
 
 	getQPainter()->drawEllipse(rect);
+
+	getQPainter()->translate(-20,-30);
+	QString text = "id: " + QString::number( getId() );
+	getQPainter()->drawText(rect, text);
 
 	getQPainter()->restore();
 }
@@ -287,6 +300,11 @@ void Shapes::Text::draw(const int translateX, const int translateY)
 	getQPainter()->translate(translateX, translateY);
 
 	getQPainter()->drawText(rect, alignment, text);
+
+
+	getQPainter()->translate(-20,-30);
+	QString text = "id: " + QString::number( getId() );
+	getQPainter()->drawText(rect, text);
 
 	getQPainter()->restore();
 
