@@ -2,7 +2,7 @@
 ShapeId: 1
 ShapeType: Line
 ShapeDimensions: 20, 90, 100, 20
-PenColor: color
+PenColor: blue
 PenWidth: 2
 PenStyle: DashDotLine
 PenCapStyle: FlatCap
@@ -10,8 +10,8 @@ PenJoinStyle: MiterJoin
 
 ShapeId: 2
 ShapeType: Polyline
-ShapeDimensions: 0, 0, 0, 0
-PenColor: color
+ShapeDimensions: 460, 90, 470, 20, 530, 40, 540, 80
+PenColor: green
 PenWidth: 6
 PenStyle: SolidLine
 PenCapStyle: FlatCap
@@ -19,67 +19,67 @@ PenJoinStyle: MiterJoin
 
 ShapeId: 3
 ShapeType: Polygon
-ShapeDimensions: 0, 0, 0, 0
-PenColor: color
+ShapeDimensions: 900, 90, 910, 20, 970, 40, 980, 80
+PenColor: cyan
 PenWidth: 6
-PenStyle: SolidLine
+PenStyle: DashDotDotLine
 PenCapStyle: FlatCap
 PenJoinStyle: MiterJoin
-BrushColor: color
+BrushColor: yellow
 BrushStyle: SolidPattern
 
 ShapeId: 4
 ShapeType: Rectangle
 ShapeDimensions: 20, 200, 170, 100
-PenColor: color
+PenColor: blue
 PenWidth: 0
 PenStyle: DashLine
 PenCapStyle: RoundCap
 PenJoinStyle: RoundJoin
-BrushColor: color
+BrushColor: red
 BrushStyle: VerPattern
 
 ShapeId: 5
 ShapeType: Square
 ShapeDimensions: 250, 150, 200
-PenColor: color
+PenColor: red
 PenWidth: 0
 PenStyle: SolidLine
 PenCapStyle: RoundCap
 PenJoinStyle: RoundJoin
-BrushColor: color
+BrushColor: blue
 BrushStyle: HorPattern
 
 ShapeId: 6
 ShapeType: Ellipse
 ShapeDimensions: 520, 200, 170, 100
-PenColor: color
+PenColor: black
 PenWidth: 12
 PenStyle: SolidLine
 PenCapStyle: FlatCap
 PenJoinStyle: MiterJoin
-BrushColor: color
+BrushColor: white
 BrushStyle: NoBrush
 
 ShapeId: 7
 ShapeType: Circle
 ShapeDimensions: 750, 150, 200
-PenColor: color
+PenColor: black
 PenWidth: 12
 PenStyle: SolidLine
 PenCapStyle: FlatCap
 PenJoinStyle: MiterJoin
-BrushColor: color
+BrushColor: magenta
 BrushStyle: SolidPattern
 
 ShapeId: 8
 ShapeType: Text
 ShapeDimensions: 250, 425, 500, 50
 TextString: Class Project 2 - 2D Graphics Modeler
-TextColor: color
-TextAlignment: alignment
+TextColor: blue
+TextAlignment: AlignCenter
 TextPointSize: 10
 TextFontFamily: Comic Sans MS
 TextFontStyle: StyleNormal
-TextFontWeight: weight
+TextFontWeight: Normal
 

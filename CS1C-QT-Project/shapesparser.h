@@ -51,15 +51,16 @@ public:
 	string writeFontWeight(int weight);
 
 	void removeSpaces(string& str);
+	void delay();
 
 private:
-
 
 	int id;
 	string line;
 	QString qLine;
 	string setting;
 	string value;
+	bool error {true};
 
 	vector<Shapes::Shape*> loadedShapes;
 };

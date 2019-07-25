@@ -19,7 +19,7 @@ void login::on_pushButton_login_clicked()
 {
     QString username = ui->lineEdit_username->text();
     QString password = ui->lineEdit_password->text();
-    if (username == "oof" && password == "123")
+	if (username == "username" && password == "password")
     {
         loggedInAsAdmin = true;
         hide();

@@ -177,6 +177,11 @@ void Polyline::setPoint(const QPoint & point)
 //	this->points.end()->setY(points.end()->y() - getX());
 }
 
+vector<QPoint> Polyline::getPoints()
+{
+	return points;
+}
+
 void Polyline::draw(const int translateX, const int translateY)
 {
 	getQPainter()->setPen(getPen());
@@ -203,6 +208,11 @@ void Polygon::setPoint(const QPoint & point)
 //	this->points.end()->setX(points.end()->x() - getX());
 //	this->points.end()->setY(points.end()->y() - getX());
 
+}
+
+vector<QPoint> Polygon::getPoints()
+{
+	return points;
 }
 
 void Polygon::draw(const int translateX, const int translateY)

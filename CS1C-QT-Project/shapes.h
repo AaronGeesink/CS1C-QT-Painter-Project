@@ -184,6 +184,9 @@ public:
     */
     bool operator==(const Shape&) const;
 
+	//! The id of the shape
+	int id;
+
     bool sortID(Shape * x, Shape * y)
     {
         return (x->id > y->id);
@@ -213,8 +216,6 @@ private:
 	int x {0};
     //! The y coordinate of the shape
 	int y {0};
-    //! The id of the shape
-    int id;
     //! The area of the shape
     double area;
     //! The perimeter of the shape
@@ -306,6 +307,9 @@ public:
       \param translateX the new x coordinate of the Polyline
       \param translateY the new y coordinate of the Polyline
     */
+
+	vector<QPoint> getPoints();
+
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
@@ -344,6 +348,9 @@ public:
       \param translateX the new x coordinate of the Polygon
       \param translateY the new y coordinate of the Polygon
     */
+
+	vector<QPoint> getPoints();
+
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:

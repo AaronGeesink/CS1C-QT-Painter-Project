@@ -1,7 +1,7 @@
 
 ShapeId: 1
 ShapeType: Line
-ShapeDimensions: 20, 90, 100, 20
+ShapeDimensions: 100, 100, 180, 30
 PenColor: blue
 PenWidth: 2
 PenStyle: DashDotLine
@@ -41,7 +41,7 @@ BrushStyle: VerPattern
 
 ShapeId: 5
 ShapeType: Square
-ShapeDimensions: 250, 150, 200
+ShapeDimensions: 270, 200, 200
 PenColor: red
 PenWidth: 0
 PenStyle: SolidLine
@@ -52,7 +52,7 @@ BrushStyle: HorPattern
 
 ShapeId: 6
 ShapeType: Ellipse
-ShapeDimensions: 520, 200, 170, 100
+ShapeDimensions: 520, 250, 170, 100
 PenColor: black
 PenWidth: 12
 PenStyle: SolidLine
@@ -80,5 +80,6 @@ TextColor: blue
 TextAlignment: AlignCenter
 TextPointSize: 10
 TextFontFamily: Comic Sans MS
-TextFontStyle: FlatCap
+TextFontStyle: StyleNormal
 TextFontWeight: Normal
+

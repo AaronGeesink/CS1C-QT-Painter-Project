@@ -60,7 +60,7 @@ public:
       Initializes a vector and transfers data from source to that vector
       \param source a vector rvalue
     */
-    vector(const vector&&source); // move constructor
+	vector(vector&&source); // move constructor
 
     //! vector class move assignment
     /*!
@@ -229,7 +229,7 @@ inline vector<T> & vector<T>::operator=(const vector & source)
     {
         elem[i] = source.elem[i];
     }
-    delete[] elem;
+	//delete[] elem;
     elem = pT;
 
     return *this;
@@ -237,7 +237,7 @@ inline vector<T> & vector<T>::operator=(const vector & source)
 
 // Move constructor
 template<class T>
-inline vector<T>::vector(const vector && source) : size_v{source.size_v}, space{source.space}, elem{source.elem}
+inline vector<T>::vector(vector && source) : size_v{source.size_v}, space{source.space}, elem{source.elem}
 {
     source.elem = nullptr;
     source.size_v = 0;

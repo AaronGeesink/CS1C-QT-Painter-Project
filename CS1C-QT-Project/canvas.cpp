@@ -2,6 +2,7 @@
 #include "ui_canvas.h"
 #include "shapesparser.h"
 #include <QDebug>
+#include <QTime>
 
 canvas::canvas(QWidget *parent) :
 	QWidget(parent),
@@ -19,13 +20,19 @@ canvas::~canvas()
 
 void canvas::setPositionCoords(int x, int y, int id)
 {
-	for (Shapes::Shape* shape : shapesData)
+	//render = false;
+	for (int i = 0; i < shapesData.size(); i++)
 	{
-		if (shape->getId() == id)
+		if (shapesData[i]->id == id)
 		{
-			shape->setXY(x,y);
+			shapesData[i]->setXY(x,y);
 		}
 	}
+	ShapesParser parser;
+	parser.writeShapesFile(shapesData);
+	shapesData = buffer;
+	update();
+	//render = true;
 }
 
 void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
@@ -35,7 +42,10 @@ void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
 
 void canvas::loadFile()
 {
-	readFile = true;
+	render = !render;
+	readFile = !readFile;
+	update();
+	buffer = shapesData;
 }
 
 void canvas::saveFile()
@@ -49,23 +59,17 @@ void canvas::paintEvent(QPaintEvent *)
 	QPainter painter(this);
 
 	QPainter* painterPtr = &painter;
-//	if (readFile)
-//	{
-		ShapesParser parser;
-		shapesData = parser.readShapesFile(painterPtr);
-		readFile = false;
-//	}
 
+	ShapesParser parser;
+	shapesData = parser.readShapesFile(painterPtr);
+	readFile = false;
 
-	for (Shapes::Shape* shape : shapesData)
+	if (render)
 	{
-		shape->draw(shape->getX(), shape->getY());
-		//shape->draw(0,0);
-		qInfo() << shape->getId();
+		for (Shapes::Shape* shape : shapesData)
+		{
+			shape->draw(shape->getX(), shape->getY());
+		}
 	}
 }
 
-void canvas::on_pushButton_clicked()
-{
-	render = !render;
-}
