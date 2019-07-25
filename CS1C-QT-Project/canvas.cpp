@@ -49,21 +49,19 @@ void canvas::paintEvent(QPaintEvent *)
 	QPainter painter(this);
 
 	QPainter* painterPtr = &painter;
-	if (readFile)
-	{
+//	if (readFile)
+//	{
 		ShapesParser parser;
 		shapesData = parser.readShapesFile(painterPtr);
 		readFile = false;
-	}
+//	}
 
-	if (render)
+
+	for (Shapes::Shape* shape : shapesData)
 	{
-		for (Shapes::Shape* shape : shapesData)
-		{
-			shape->draw(shape->getX(), shape->getY());
-			//shape->draw(0,0);
-			qInfo() << shape->getId();
-		}
+		shape->draw(shape->getX(), shape->getY());
+		//shape->draw(0,0);
+		qInfo() << shape->getId();
 	}
 }
 
