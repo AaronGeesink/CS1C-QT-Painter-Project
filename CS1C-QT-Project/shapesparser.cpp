@@ -224,14 +224,12 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 			vector<QPoint> points = pPolyLine->getPoints();
 			for (int i = 0; i < points.size() - 1; i++)
 			{
-				outFile << points[i].x() << ", "
-						<< points[i].y() << ", ";
+				outFile << points[i].x() + pPolyLine->getX() << ", "
+						<< points[i].y() + pPolyLine->getY() << ", ";
 			}
-			outFile << (points.end() - 1)->x() << ", " << (points.end() - 1)->y() << '\n';
+			outFile << (points.end() - 1)->x() + pPolyLine->getX() << ", " << (points.end() - 1)->y() + pPolyLine->getY() << '\n';
 
-			//QColor color(pPolyLine->getPen().color());
 			outFile << "PenColor: " << "green" << '\n';
-
 			outFile << "PenWidth: " << pPolyLine->getPen().width() << '\n';
 			outFile << "PenStyle: " << writePenStyle(pPolyLine->getPen().style()) << '\n';
 			outFile << "PenCapStyle: " << writeCapStyle(pPolyLine->getPen().capStyle()) << '\n';
@@ -249,10 +247,10 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 			vector<QPoint> points = pPolygon->getPoints();
 			for (int i = 0; i < points.size() - 1; i++)
 			{
-				outFile << points[i].x() << ", "
-						<< points[i].y() << ", ";
+				outFile << points[i].x() + pPolygon->getX() << ", "
+						<< points[i].y() + pPolygon->getY() << ", ";
 			}
-			outFile << (points.end() - 1)->x() << ", " << (points.end() - 1)->y() << '\n';
+			outFile << (points.end() - 1)->x() + pPolygon->getX() << ", " << (points.end() - 1)->y() + pPolygon->getY() << '\n';
 
 			outFile << "PenColor: " << "cyan" << '\n';
 

@@ -171,10 +171,16 @@ void Polyline::setPoint(const QPoint & point)
 {
 	points.push_back(point);
 
-//	setXY(points.end()->x(), points.end()->y());
-
-//	this->points.end()->setX(points.end()->x() - getX());
-//	this->points.end()->setY(points.end()->y() - getX());
+	if (points.size() == 1)
+	{
+		setXY(points.begin()->x(), points.begin()->y());
+		points[0] = QPoint(0,0);
+	}
+	else
+	{
+		points[points.size() - 1].setX(points[points.size() - 1].x() - this->getX());
+		points[points.size() - 1].setY(points[points.size() - 1].y() - this->getY());
+	}
 }
 
 vector<QPoint> Polyline::getPoints()
@@ -203,11 +209,16 @@ void Polygon::setPoint(const QPoint & point)
 {
 	points.push_back(point);
 
-//	setXY(points.end()->x(), points.end()->y());
-
-//	this->points.end()->setX(points.end()->x() - getX());
-//	this->points.end()->setY(points.end()->y() - getX());
-
+	if (points.size() == 1)
+	{
+		setXY(points.begin()->x(), points.begin()->y());
+		points[0] = QPoint(0,0);
+	}
+	else
+	{
+		points[points.size() - 1].setX(points[points.size() - 1].x() - this->getX());
+		points[points.size() - 1].setY(points[points.size() - 1].y() - this->getY());
+	}
 }
 
 vector<QPoint> Polygon::getPoints()

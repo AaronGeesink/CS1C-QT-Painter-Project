@@ -25,8 +25,8 @@ protected:
 
 private:
 	Ui::canvas *ui;
-	bool readFile;
 	bool render;
+	bool error;
 	vector<Shapes::Shape*> shapesData;
 	vector<Shapes::Shape*> buffer;
 };

@@ -3,6 +3,7 @@
 #include "shapes.h"
 #include "canvas.h"
 #include <QDebug>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -60,6 +61,12 @@ void MainWindow::on_pushButton_move_clicked()
         int xCoord = ui->lineEdit_xCoord->text().toInt();
         int yCoord = ui->lineEdit_yCoord->text().toInt();
 		int id = ui->lineEdit_id->text().toInt();
+
+		if (xCoord < 0 || yCoord < 0)
+		{
+			QMessageBox::warning(this,"Coordinate Error","Cannot set to negative coordinates");
+			return;
+		}
 
 		canvas->setPositionCoords(xCoord, yCoord, id);
     }

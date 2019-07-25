@@ -3,13 +3,13 @@
 #include "shapesparser.h"
 #include <QDebug>
 #include <QTime>
+#include <QMessageBox>
 
 canvas::canvas(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::canvas)
 {
 	ui->setupUi(this);
-	readFile = false;
 	render = false;
 }
 
@@ -20,19 +20,26 @@ canvas::~canvas()
 
 void canvas::setPositionCoords(int x, int y, int id)
 {
-	//render = false;
 	for (int i = 0; i < shapesData.size(); i++)
 	{
 		if (shapesData[i]->id == id)
 		{
 			shapesData[i]->setXY(x,y);
+			error = true;
 		}
 	}
+
+	if (!error)
+	{
+		QMessageBox::warning(this,"id Error","Not a valid id");
+		error = false;
+		return;
+	}
+
 	ShapesParser parser;
 	parser.writeShapesFile(shapesData);
 	shapesData = buffer;
 	update();
-	//render = true;
 }
 
 void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
@@ -42,8 +49,7 @@ void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
 
 void canvas::loadFile()
 {
-	render = !render;
-	readFile = !readFile;
+	render = true;
 	update();
 	buffer = shapesData;
 }
@@ -62,7 +68,6 @@ void canvas::paintEvent(QPaintEvent *)
 
 	ShapesParser parser;
 	shapesData = parser.readShapesFile(painterPtr);
-	readFile = false;
 
 	if (render)
 	{
