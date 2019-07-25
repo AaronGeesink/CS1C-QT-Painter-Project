@@ -141,14 +141,16 @@ public:
     */
 	void setXY(int x, int y);
 
+    //! Disabled copy constructor
+	Shape(const Shape&) = delete;
+
+    //!Disabled copy assignment
+	Shape& operator=(const Shape&) = delete;
+
     //! Returns the x coordinate of the shape to the client
     /*!
       \return the x coordinate of the shape
     */
-
-	Shape(const Shape&) = delete;
-	Shape& operator=(const Shape&) = delete;
-
 	int getX();
 
     //! Returns the y coordinate of the shape to the client
@@ -263,6 +265,11 @@ public:
     */
 	void getPoints(int& x1, int& y1, int& x2, int& y2);
 
+    //! Renders a Line object at the given coordinates
+    /*!
+      \param translateX the new x coordinate of the Line
+      \param translateY the new y coordinate of the Line
+    */
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 
@@ -347,6 +354,7 @@ public:
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
+    //! The points which make up the Polygon object
 	project::vector<QPoint> points;
 };
 
@@ -377,14 +385,17 @@ public:
     */
 	void setRectangle(const QRect& rect);
 
-    //! Translates a Rectangle object to the specified coordinate
+    //! Obtain the QRect in the Rectangle object
+    /*!
+      \returns a QRect object in Rectangle
+    */
+	QRect getRect();
+
+    //! Renders a Rectangle object at the given coordinates
     /*!
       \param translateX the new x coordinate of the Rectangle
       \param translateY the new y coordinate of the Rectangle
     */
-
-	QRect getRect();
-
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:
@@ -418,14 +429,17 @@ public:
     */
 	void setEllipse(const QRect& rect);
 
-    //! Translates a Ellipse object to the specified coordinate
+    //! Obtain the QRect in the Ellipse object
+    /*!
+      \returns a QRect object
+    */
+	QRect getRect();
+
+    //! Renders an Ellipse object at the given coordinates
     /*!
       \param translateX the new x coordinate of the Ellipse
       \param translateY the new y coordinate of the Ellipse
     */
-
-	QRect getRect();
-
 	void draw(const int translateX = 0, const int translateY = 0) override;
 private:
     //! The QRect data in the Ellipse object
@@ -519,20 +533,38 @@ public:
     */
 	void setAlignment(Qt::AlignmentFlag alignment);
 
-    //! Translates a Text object to the specified coordinate
+    //! getFont member function
+    /*!
+      Gets the QFont of the text
+      \return the font of the Text object
+    */
+	QFont getFont();
+
+    //! getText member function
+    /*!
+      Gets the Qstring of the text
+      \return the string of the Text object
+    */
+	QString getText();
+
+    //! getAlignment member function
+    /*!
+      Gets the alignment of the text
+      \return the alignment of the Text object
+    */
+	Qt::AlignmentFlag getAlignment();
+
+    //! Obtain the QRect in the Text object
+    /*!
+      \returns a QRect object
+    */
+	QRect getRect();
+
+    //! Renders a Text object at the given coordinates
     /*!
       \param translateX the new x coordinate of the Text
       \param translateY the new y coordinate of the Text
     */
-
-	QFont getFont();
-
-	QString getText();
-
-	Qt::AlignmentFlag getAlignment();
-
-	QRect getRect();
-
 	void draw(const int translateX = 0, const int translateY = 0) override;
 
 private:

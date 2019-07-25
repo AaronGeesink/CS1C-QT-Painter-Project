@@ -4,19 +4,20 @@
 // vector.h - class specification
 // a vector which approximates the stl vector
 
-//! vector class
-/*!
-  An array-based vector which approximates the STL vector. The size of the array increases as needed when data is added
-*/
-
+#include <QDebug>
 #include <algorithm>
 using std::move;
 using std::swap;
 using std::exit;
 
+
 namespace project
 {
 
+//! vector class
+/*!
+  An array-based vector which approximates the STL vector. The size of the array increases as needed when data is added
+*/
 template<class T>
 class vector
 {
@@ -406,7 +407,7 @@ inline typename vector<T>::iterator vector<T>::insert(iterator p, const T & v)
     }
     catch(iterator p)
     {
-        // Debug message goes here
+        qInfo() << "insert function iterator is outside of vector boundaries.";
     }
 
 }
