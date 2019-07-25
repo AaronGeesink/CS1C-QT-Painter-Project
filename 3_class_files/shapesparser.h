@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <QDebug>
+#include <QFile>
 
 class ShapesParser
 {
@@ -14,7 +15,7 @@ public:
 
 	// MUST CHANGE FILE PATH IN readShapesFile() TO BE MORE GENERAL
 	vector<Shapes::Shape*> readShapesFile(QPainter* painter);
-	void writeShapesFile();
+	void writeShapesFile(vector<Shapes::Shape*> shapesData);
 
 	void parseLine(Shapes::Line* pLine, std::ifstream& inFile);
 	void parsePolyline(Shapes::Polyline* pPolyline, std::ifstream& inFile);
@@ -38,15 +39,28 @@ public:
 	QFont::Style parseTextStyle(string& textStyle);
 	QFont::Weight parseWeight(string& weight);
 
+	string writeColor(const QColor& color);
+	string writePenStyle(Qt::PenStyle penStyle);
+	string writeCapStyle(Qt::PenCapStyle cap);
+	string writeJoinStyle(Qt::PenJoinStyle join);
+	string writeBrushStyle(Qt::BrushStyle brushStyle);
+
+	string writeAlignment(Qt::AlignmentFlag alignment);
+	string writeFamily(QString family);
+	string writeFontStyle(QFont::Style style);
+	string writeFontWeight(int weight);
+
 	void removeSpaces(string& str);
+	void delay();
 
 private:
 
-
 	int id;
 	string line;
+	QString qLine;
 	string setting;
 	string value;
+	bool error {true};
 
 	vector<Shapes::Shape*> loadedShapes;
 };

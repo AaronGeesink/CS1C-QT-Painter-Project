@@ -406,7 +406,7 @@ inline typename vector<T>::iterator vector<T>::insert(iterator p, const T & v)
     }
     catch(iterator p)
     {
-        // Debug message goes here
+        qInfo() << "Insert Error: Cannot insert out of bounds";
     }
 
 }

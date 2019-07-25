@@ -18,17 +18,17 @@ public:
 	void setPositionCoords(int x, int y, int id);
 	void setShapesData(vector<Shapes::Shape*> shapesData);
 	void loadFile();
+	void saveFile();
 
 protected:
 	void paintEvent(QPaintEvent *) override;
 
-private slots:
-	void on_pushButton_load_clicked();
-
 private:
 	Ui::canvas *ui;
-	bool readFile;
+	bool render;
+	bool error;
 	vector<Shapes::Shape*> shapesData;
+	vector<Shapes::Shape*> buffer;
 };
 
 #endif // CANVAS_H

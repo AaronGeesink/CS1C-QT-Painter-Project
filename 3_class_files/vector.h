@@ -60,7 +60,7 @@ public:
       Initializes a vector and transfers data from source to that vector
       \param source a vector rvalue
     */
-    vector(const vector&&source); // move constructor
+	vector(vector&&source); // move constructor
 
     //! vector class move assignment
     /*!
@@ -163,6 +163,21 @@ public:
     */
     iterator erase(iterator p); // remove element pointed to by p
 
+    void selection_sort(T * begin, T * end, bool(*comparison)(T *, T *))
+    {
+        // Step through each element of the array
+        for (T * start = begin; start < end; start++)
+        {
+            // T * best = start;
+            // Look for smallest/largest element remaining in the array
+            for (T * current  = start + 1; current < end; current++)
+            {
+                if (comparison(current, start)) // COMPARISON DONE HERE
+                    std::swap(current, start);
+            }
+        }
+    }
+
 private:
     //! The number of T values stored in the vector.
     int size_v;
@@ -214,7 +229,7 @@ inline vector<T> & vector<T>::operator=(const vector & source)
     {
         elem[i] = source.elem[i];
     }
-    delete[] elem;
+	//delete[] elem;
     elem = pT;
 
     return *this;
@@ -222,7 +237,7 @@ inline vector<T> & vector<T>::operator=(const vector & source)
 
 // Move constructor
 template<class T>
-inline vector<T>::vector(const vector && source) : size_v{source.size_v}, space{source.space}, elem{source.elem}
+inline vector<T>::vector(vector && source) : size_v{source.size_v}, space{source.space}, elem{source.elem}
 {
     source.elem = nullptr;
     source.size_v = 0;

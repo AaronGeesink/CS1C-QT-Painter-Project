@@ -1,4 +1,7 @@
 #include "shapesparser.h"
+#include <QMessageBox>
+#include <QTime>
+#include <QCoreApplication>
 
 ShapesParser::ShapesParser()
 { }
@@ -6,7 +9,7 @@ ShapesParser::ShapesParser()
 /*vector<Shapes::Line>&*/
 vector<Shapes::Shape*> ShapesParser::readShapesFile(QPainter * painter)
 {
-	// MUST CHANGE FILE PATH TO BE MORE GENERAL
+	// MUST CHANGE FILE PATH HERE IF NOT LOADING
 	string fileName("C:\\Users\\roverdog\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
 
 	std::ifstream inFile;
@@ -16,6 +19,15 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPainter * painter)
 	{
 		// exit if file not found. might use exception handling for this.
 		qInfo() << "inFile failed to load.";
+		if (error)
+		{
+			QMessageBox messageBox;
+			messageBox.critical(0,"Read Error","Shapes.txt file path must be specified in shapesparser.cpp on line 13 and line 186!"
+											   "\nPlease change those lines and reload!");
+			messageBox.setFixedSize(500,200);
+			error = false;
+		}
+
 		exit(1);
 	}
 
@@ -158,9 +170,186 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPainter * painter)
 	return loadedShapes;
 }
 
-void ShapesParser::writeShapesFile()
+void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 {
+	// MUST CHANGE FILE PATH HERE IF NOT LOADING
+	string fileName("C:\\Users\\roverdog\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
 
+	std::ofstream outFile;
+	outFile.open(fileName.c_str(), std::ofstream::out | std::ofstream::trunc);
+
+	if (outFile.fail())
+	{
+		// exit if file not found. might use exception handling for this.
+		qInfo() << "outFile failed to load.";
+		QMessageBox messageBox;
+		messageBox.critical(0,"Read Error","Shapes.txt file path must be specified in shapesparser.cpp on line 13 and line 186!");
+		messageBox.setFixedSize(500,200);
+		delay();
+		exit(1);
+	}
+
+	outFile << '\n';
+	for (Shapes::Shape* shape : shapesData)
+	{
+		qInfo() << "writing line";
+		if (shape->getShape() == Shapes::Shape::ShapeType::Line)
+		{
+			Shapes::Line* pLine = dynamic_cast<Shapes::Line*>(shape);
+
+			outFile << "ShapeId: " << pLine->getId() << '\n';
+			outFile << "ShapeType: Line\n";
+			int x1, y1, x2, y2;
+			pLine->getPoints(x1,y1,x2,y2);
+			outFile << "ShapeDimensions: " << x1 << ", " << y1 << ", " << x2 << ", " << y2 << '\n';
+
+			//QColor color(pLine->getPen().color());
+			outFile << "PenColor: " << "blue" << '\n';
+
+			outFile << "PenWidth: " << pLine->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pLine->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pLine->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pLine->getPen().joinStyle()) << '\n';
+
+			outFile << '\n';
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Polyline)
+		{
+			Shapes::Polyline* pPolyLine = dynamic_cast<Shapes::Polyline*>(shape);
+
+			outFile << "ShapeId: " << pPolyLine->getId() << '\n';
+			outFile << "ShapeType: Polyline\n";
+
+			outFile << "ShapeDimensions: ";
+			vector<QPoint> points = pPolyLine->getPoints();
+			for (int i = 0; i < points.size() - 1; i++)
+			{
+				outFile << points[i].x() + pPolyLine->getX() << ", "
+						<< points[i].y() + pPolyLine->getY() << ", ";
+			}
+			outFile << (points.end() - 1)->x() + pPolyLine->getX() << ", " << (points.end() - 1)->y() + pPolyLine->getY() << '\n';
+
+			outFile << "PenColor: " << "green" << '\n';
+			outFile << "PenWidth: " << pPolyLine->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pPolyLine->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pPolyLine->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pPolyLine->getPen().joinStyle()) << '\n';
+
+			outFile << '\n';
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Polygon)
+		{
+			Shapes::Polygon* pPolygon = dynamic_cast<Shapes::Polygon*>(shape);
+			outFile << "ShapeId: " << pPolygon->getId() << '\n';
+			outFile << "ShapeType: Polygon\n";
+
+			outFile << "ShapeDimensions: ";
+			vector<QPoint> points = pPolygon->getPoints();
+			for (int i = 0; i < points.size() - 1; i++)
+			{
+				outFile << points[i].x() + pPolygon->getX() << ", "
+						<< points[i].y() + pPolygon->getY() << ", ";
+			}
+			outFile << (points.end() - 1)->x() + pPolygon->getX() << ", " << (points.end() - 1)->y() + pPolygon->getY() << '\n';
+
+			outFile << "PenColor: " << "cyan" << '\n';
+
+			outFile << "PenWidth: " << pPolygon->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pPolygon->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pPolygon->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pPolygon->getPen().joinStyle()) << '\n';
+
+			outFile << "BrushColor: " << "yellow" << '\n';
+			outFile << "BrushStyle: " << writeBrushStyle(pPolygon->getBrush().style()) << '\n';
+
+			outFile << '\n';
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Rectangle)
+		{
+			Shapes::Rectangle* pRectangle = dynamic_cast<Shapes::Rectangle*>(shape);
+
+			outFile << "ShapeId: " << pRectangle->getId() << '\n';
+
+			if (pRectangle->getRect().width() == pRectangle->getRect().height())
+			{
+				outFile << "ShapeType: Square\n";
+				outFile << "ShapeDimensions: " << pRectangle->getX() << ", " << pRectangle->getY()
+						<< ", " << pRectangle->getRect().width() << '\n';
+				outFile << "PenColor: " << "red" << '\n';
+			}
+			else
+			{
+				outFile << "ShapeType: Rectangle\n";
+				outFile << "ShapeDimensions: " << pRectangle->getX() << ", " << pRectangle->getY()
+						<< ", " << pRectangle->getRect().width() << ", " << pRectangle->getRect().height() << '\n';
+				outFile << "PenColor: " << "blue" << '\n';
+			}
+
+			outFile << "PenWidth: " << pRectangle->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pRectangle->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pRectangle->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pRectangle->getPen().joinStyle()) << '\n';
+			if (pRectangle->getRect().width() == pRectangle->getRect().height())
+				outFile << "BrushColor: " << "blue" << '\n';
+			else
+				outFile << "BrushColor: " << "red" << '\n';
+			outFile << "BrushStyle: " << writeBrushStyle(pRectangle->getBrush().style()) << '\n';
+
+			outFile << '\n';
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Ellipse)
+		{
+			Shapes::Ellipse* pEllipse = dynamic_cast<Shapes::Ellipse*>(shape);
+
+			outFile << "ShapeId: " << pEllipse->getId() << '\n';
+
+			if (pEllipse->getRect().width() == pEllipse->getRect().height())
+			{
+				outFile << "ShapeType: Circle\n";
+				outFile << "ShapeDimensions: " << pEllipse->getX() << ", " << pEllipse->getY()
+						<< ", " << pEllipse->getRect().width() << '\n';
+			}
+			else
+			{
+			outFile << "ShapeType: Ellipse\n";
+			outFile << "ShapeDimensions: " << pEllipse->getX() << ", " << pEllipse->getY()
+					<< ", " << pEllipse->getRect().width() << ", " << pEllipse->getRect().height() << '\n';
+			}
+
+			outFile << "PenColor: " << "black" << '\n';
+			outFile << "PenWidth: " << pEllipse->getPen().width() << '\n';
+			outFile << "PenStyle: " << writePenStyle(pEllipse->getPen().style()) << '\n';
+			outFile << "PenCapStyle: " << writeCapStyle(pEllipse->getPen().capStyle()) << '\n';
+			outFile << "PenJoinStyle: " << writeJoinStyle(pEllipse->getPen().joinStyle()) << '\n';
+			if (pEllipse->getRect().width() == pEllipse->getRect().height())
+				outFile << "BrushColor: " << "magenta" << '\n';
+			else
+				outFile << "BrushColor: " << "white" << '\n';
+			outFile << "BrushStyle: " << writeBrushStyle(pEllipse->getBrush().style()) << '\n';
+
+			outFile << '\n';
+		}
+		else if (shape->getShape() == Shapes::Shape::ShapeType::Text)
+		{
+			Shapes::Text* pText = dynamic_cast<Shapes::Text*>(shape);
+
+			outFile << "ShapeId: " << pText->getId() << '\n';
+			outFile << "ShapeType: Text\n";
+
+			outFile << "ShapeDimensions: " << pText->getX() << ", " << pText->getY()
+					<< ", " << pText->getRect().width() << ", " << pText->getRect().height() << '\n';
+
+			outFile << "TextString: " << pText->getText().toUtf8().constData() << '\n';
+			outFile << "TextColor: " << "blue" << '\n';
+			outFile << "TextAlignment: " <<  "AlignCenter" << '\n';
+			outFile << "TextPointSize: " << pText->getFont().pointSize() << '\n';
+			outFile << "TextFontFamily: " << writeFamily(pText->getFont().family()) << '\n';
+			outFile << "TextFontStyle: " << writeFontStyle(pText->getFont().style()) << '\n';
+			outFile << "TextFontWeight: " << "Normal" << '\n';
+
+			outFile << '\n';
+		}
+	}
 }
 
 void ShapesParser::removeSpaces(string &str)
@@ -193,7 +382,6 @@ void ShapesParser::parseLine(Shapes::Line* pLine, std::ifstream& inFile)
 			{
 				if (setting[3] == 'C' && setting [4] != 'a')
 				{
-					//qInfo() << QString::fromStdString(value);
 					pLine->setPenColor(parseColor(value));
 				}
 				else if (setting[3] == 'W')
@@ -534,8 +722,6 @@ QPoint ShapesParser::parsePoint(string& points)
 	removeSpaces(points);
 	string begin = points;
 
-	//qInfo() << QString::fromStdString(points);
-
 	std::istringstream lineStream(points);
 	string str;
 	char delim = ',';
@@ -546,14 +732,9 @@ QPoint ShapesParser::parsePoint(string& points)
 	if (lineStream.peek() == delim)
 		lineStream.ignore();
 
-	//qInfo() << x;
-	//qInfo() << y;
-
 	lineStream >> points;
 	if(begin == points)
 		points = "";
-
-	//qInfo() << QString::fromStdString(points);
 
 	QPoint coordinate(x,y);
 	return coordinate;
@@ -837,4 +1018,156 @@ QFont::Weight ShapesParser::parseWeight(string& weight)
 		default:
 			return QFont::Weight::Normal;
 	}
+}
+
+string writeColor(const QColor color)
+{
+
+	if ( color == QColor(Qt::GlobalColor::white))
+		return "white";
+
+	else if ( color == QColor(Qt::GlobalColor::blue))
+		return "blue";
+
+	else if ( color == QColor(Qt::GlobalColor::black))
+		return "black";
+
+	else if ( color == QColor(Qt::GlobalColor::red))
+		return "red";
+
+	else if ( color == QColor(Qt::GlobalColor::green))
+		return "green";
+
+	else if ( color == QColor(Qt::GlobalColor::gray))
+		return "gray";
+
+	else if ( color == QColor(Qt::GlobalColor::cyan))
+		return "cyan";
+
+	else if ( color == QColor(Qt::GlobalColor::magenta))
+		return "magenta";
+
+	else if ( color == QColor(Qt::GlobalColor::yellow))
+		return "yellow";
+
+	else
+		return "black";
+}
+
+string ShapesParser::writePenStyle(Qt::PenStyle penStyle)
+{
+	if (penStyle == Qt::PenStyle::NoPen)
+		return "NoPen";
+	else if (penStyle == Qt::PenStyle::SolidLine)
+		return "SolidLine";
+	if (penStyle == Qt::PenStyle::DashLine)
+		return "DashLine";
+	else if (penStyle == Qt::PenStyle::DotLine)
+		return "DotLine";
+	if (penStyle == Qt::PenStyle::DashDotLine)
+		return "DashDotLine";
+	else if (penStyle == Qt::PenStyle::DashDotDotLine)
+		return "DashDotDotLine";
+	else
+		return "SolidLine";
+}
+string ShapesParser::writeCapStyle(Qt::PenCapStyle cap)
+{
+	if (cap == Qt::PenCapStyle::FlatCap)
+		return "FlatCap";
+	else if (cap == Qt::PenCapStyle::SquareCap)
+		return "SquareCap";
+	else if (cap == Qt::PenCapStyle::RoundCap)
+		return "RoundCap";
+	else
+		return "FlatCap";
+}
+
+string ShapesParser::writeJoinStyle(Qt::PenJoinStyle join)
+{
+	if (join == Qt::PenJoinStyle::MiterJoin)
+		return "MiterJoin";
+	else if (join == Qt::PenJoinStyle::BevelJoin)
+		return "BevelJoin";
+	else if (join == Qt::PenJoinStyle::RoundJoin)
+		return "RoundJoin";
+	else
+		return "MiterJoin";
+}
+
+string ShapesParser::writeBrushStyle(Qt::BrushStyle brushStyle)
+{
+	if (brushStyle == Qt::BrushStyle::SolidPattern)
+		return "SolidPattern";
+	else if (brushStyle == Qt::BrushStyle::HorPattern)
+		return "HorPattern";
+	else if (brushStyle == Qt::BrushStyle::VerPattern)
+		return "VerPattern";
+	else if (brushStyle == Qt::BrushStyle::NoBrush)
+		return "NoBrush";
+	else
+		return "SolidPattern";
+}
+
+string writeAlignment(Qt::AlignmentFlag alignment)
+{
+	if (alignment == Qt::AlignmentFlag::AlignLeft)
+		return "AlignLeft";
+	else if (alignment == Qt::AlignmentFlag::AlignRight)
+		return "AlignRight";
+	else if (alignment == Qt::AlignmentFlag::AlignTop)
+		return "AlignTop";
+	else if (alignment == Qt::AlignmentFlag::AlignBottom)
+		return "AlignBottom";
+	else if (alignment == Qt::AlignmentFlag::AlignCenter)
+		return "AlignCenter";
+	else
+		return "AlignCenter";
+}
+
+string ShapesParser::writeFamily(QString family)
+{
+	if (family == "Comic Sans MS")
+		return "Comic Sans MS";
+	else if (family == "Courier")
+		return "Courier";
+	else if (family == "Helvetica")
+		return "Helvetica";
+	else if (family == "Times")
+		return "Times";
+	else
+		return "Times";
+}
+
+string ShapesParser::writeFontStyle(QFont::Style style)
+{
+	if (style == QFont::Style::StyleNormal)
+		return "StyleNormal";
+	else if (style == QFont::Style::StyleItalic)
+		return "StyleItalic";
+	else if (style == QFont::Style::StyleOblique)
+		return "StyleOblique";
+	else
+		return "StyleNormal";
+}
+
+string writeFontWeight(QFont::Weight weight)
+{
+	if (weight == 0)
+		return "Thin";
+	else if (weight == 25)
+		return "Light";
+	else if (weight == 50)
+		return "Normal";
+	else if (weight == 75)
+		return "Bold";
+	else
+		return "Normal";
+}
+
+void ShapesParser::delay()
+{
+	QTime dieTime= QTime::currentTime().addSecs(30);
+	while (QTime::currentTime() < dieTime)
+		QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }

@@ -10,7 +10,7 @@ ShapesParser::ShapesParser()
 vector<Shapes::Shape*> ShapesParser::readShapesFile(QPainter * painter)
 {
 	// MUST CHANGE FILE PATH HERE IF NOT LOADING
-	string fileName("C:\\Users\\roverdog\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
+    string fileName("C:\\Users\\chatm\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
 
 	std::ifstream inFile;
 	inFile.open(fileName.c_str());
@@ -22,7 +22,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPainter * painter)
 		if (error)
 		{
 			QMessageBox messageBox;
-			messageBox.critical(0,"Read Error","Shapes.txt file path must be specified in shapesparser.cpp on line 13 and line 186!"
+            messageBox.critical(0,"Read Error","Shapes.txt file path must be specified in shapesparser.cpp on line 13 and line 176!"
 											   "\nPlease change those lines and reload!");
 			messageBox.setFixedSize(500,200);
 			error = false;
@@ -173,7 +173,7 @@ vector<Shapes::Shape*> ShapesParser::readShapesFile(QPainter * painter)
 void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 {
 	// MUST CHANGE FILE PATH HERE IF NOT LOADING
-	string fileName("C:\\Users\\roverdog\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
+    string fileName("C:\\Users\\chatm\\Desktop\\CS1C-QT-Project\\CS1C-QT-Project\\shapes.txt");
 
 	std::ofstream outFile;
 	outFile.open(fileName.c_str(), std::ofstream::out | std::ofstream::trunc);
@@ -183,7 +183,7 @@ void ShapesParser::writeShapesFile(vector<Shapes::Shape*> shapesData)
 		// exit if file not found. might use exception handling for this.
 		qInfo() << "outFile failed to load.";
 		QMessageBox messageBox;
-		messageBox.critical(0,"Read Error","Shapes.txt file path must be specified in shapesparser.cpp on line 13 and line 186!");
+        messageBox.critical(0,"Read Error","Shapes.txt file path must be specified in shapesparser.cpp on line 13 and line 176!");
 		messageBox.setFixedSize(500,200);
 		delay();
 		exit(1);

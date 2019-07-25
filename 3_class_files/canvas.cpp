@@ -2,13 +2,15 @@
 #include "ui_canvas.h"
 #include "shapesparser.h"
 #include <QDebug>
+#include <QTime>
+#include <QMessageBox>
 
 canvas::canvas(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::canvas)
 {
 	ui->setupUi(this);
-	readFile = false;
+	render = false;
 }
 
 canvas::~canvas()
@@ -18,14 +20,26 @@ canvas::~canvas()
 
 void canvas::setPositionCoords(int x, int y, int id)
 {
-	for (Shapes::Shape* shape : shapesData)
+	for (int i = 0; i < shapesData.size(); i++)
 	{
-		if (shape->getId() == id)
+		if (shapesData[i]->id == id)
 		{
-			shape->setXY(x,y);
+			shapesData[i]->setXY(x,y);
+			error = true;
 		}
 	}
-	//repaint();
+
+	if (!error)
+	{
+		QMessageBox::warning(this,"id Error","Not a valid id");
+		error = false;
+		return;
+	}
+
+	ShapesParser parser;
+	parser.writeShapesFile(shapesData);
+	shapesData = buffer;
+	update();
 }
 
 void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
@@ -35,7 +49,15 @@ void canvas::setShapesData(vector<Shapes::Shape*> shapesData)
 
 void canvas::loadFile()
 {
-	readFile = true;
+	render = true;
+	update();
+	buffer = shapesData;
+}
+
+void canvas::saveFile()
+{
+	ShapesParser parser;
+	parser.writeShapesFile(shapesData);
 }
 
 void canvas::paintEvent(QPaintEvent *)
@@ -43,25 +65,16 @@ void canvas::paintEvent(QPaintEvent *)
 	QPainter painter(this);
 
 	QPainter* painterPtr = &painter;
-	if (readFile)
-	{
-		ShapesParser parser;
-		shapesData = parser.readShapesFile(painterPtr);
-		readFile = false;
-		//update();
-	}
 
-	for (Shapes::Shape* shape : shapesData)
-	{
-		shape->draw(shape->getX(), shape->getY());
-		//shape->draw(0,0);
-		qInfo() << shape->getId();
-	}
+	ShapesParser parser;
+	shapesData = parser.readShapesFile(painterPtr);
 
-	painter.end();
+	if (render)
+	{
+		for (Shapes::Shape* shape : shapesData)
+		{
+			shape->draw(shape->getX(), shape->getY());
+		}
+	}
 }
 
-void canvas::on_pushButton_load_clicked()
-{
-	readFile = true;
-}

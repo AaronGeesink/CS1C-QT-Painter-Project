@@ -2,8 +2,8 @@
 
 using namespace Shapes;
 
-Shape::Shape(QPainter* painter, int id, ShapeType shape)
-	: qpainter{painter}, id{id}, shape{shape}
+Shape::Shape(QPainter* painter, int id, double area, double perimeter, ShapeType shape)
+    : qpainter{painter}, id{id}, area{area}, perimeter{perimeter}, shape{shape}
 {
 	pen = Qt::SolidLine;
 	brush = Qt::NoBrush;
@@ -140,6 +140,16 @@ void Line::setPoints(const QPoint & pointBegin, const QPoint & pointEnd)
 	this->pointEnd.setY(pointEnd.y() - getY());
 }
 
+void Line::getPoints(int& x1, int& y1, int& x2, int& y2)
+{
+	x1 = pointBegin.x() + getX();
+	y1 = pointBegin.y() + getY();
+
+	x2 = pointEnd.x() + getX();
+	y2 = pointEnd.y() + getY();
+}
+
+
 void Line::draw(const int translateX, const int translateY)
 {
 	getQPainter()->setPen(getPen());
@@ -161,10 +171,21 @@ void Polyline::setPoint(const QPoint & point)
 {
 	points.push_back(point);
 
-//	setXY(points.end()->x(), points.end()->y());
+	if (points.size() == 1)
+	{
+		setXY(points.begin()->x(), points.begin()->y());
+		points[0] = QPoint(0,0);
+	}
+	else
+	{
+		points[points.size() - 1].setX(points[points.size() - 1].x() - this->getX());
+		points[points.size() - 1].setY(points[points.size() - 1].y() - this->getY());
+	}
+}
 
-//	this->points.end()->setX(points.end()->x() - getX());
-//	this->points.end()->setY(points.end()->y() - getX());
+vector<QPoint> Polyline::getPoints()
+{
+	return points;
 }
 
 void Polyline::draw(const int translateX, const int translateY)
@@ -188,11 +209,21 @@ void Polygon::setPoint(const QPoint & point)
 {
 	points.push_back(point);
 
-//	setXY(points.end()->x(), points.end()->y());
+	if (points.size() == 1)
+	{
+		setXY(points.begin()->x(), points.begin()->y());
+		points[0] = QPoint(0,0);
+	}
+	else
+	{
+		points[points.size() - 1].setX(points[points.size() - 1].x() - this->getX());
+		points[points.size() - 1].setY(points[points.size() - 1].y() - this->getY());
+	}
+}
 
-//	this->points.end()->setX(points.end()->x() - getX());
-//	this->points.end()->setY(points.end()->y() - getX());
-
+vector<QPoint> Polygon::getPoints()
+{
+	return points;
 }
 
 void Polygon::draw(const int translateX, const int translateY)
@@ -220,6 +251,11 @@ void Rectangle::setRectangle(const QRect & rect)
 	this->rect.moveTo(0,0);
 }
 
+QRect Rectangle::getRect()
+{
+	return rect;
+}
+
 void Rectangle::draw(const int translateX, const int translateY)
 {
 	getQPainter()->setPen(getPen());
@@ -244,6 +280,11 @@ void Ellipse::setEllipse(const QRect & rect)
 	this->rect.moveTo(0,0);
 }
 
+QRect Ellipse::getRect()
+{
+	return rect;
+}
+
 void Ellipse::draw(const int translateX, const int translateY)
 {
 	getQPainter()->setPen(getPen());
@@ -264,6 +305,9 @@ void Ellipse::draw(const int translateX, const int translateY)
 void Text::setText(const QRect& rect, const QString& text)
 {
 	this->rect = rect;
+	setXY(rect.x(),rect.y());
+	this->rect.moveTo(0,0);
+
 	this->text = text;
 }
 
@@ -289,6 +333,8 @@ void Text::setFont(const QString& family)
 void Text::setRect(const QRect& rect)
 {
 	this->rect = rect;
+	setXY(rect.x(),rect.y());
+	this->rect.moveTo(0,0);
 }
 
 void Text::setWeight(QFont::Weight weight)
@@ -311,6 +357,25 @@ void Text::setAlignment(Qt::AlignmentFlag alignment)
 	this->alignment = alignment;
 }
 
+QFont Text::getFont()
+{
+	return font;
+}
+
+QString Text::getText()
+{
+	return text;
+}
+
+Qt::AlignmentFlag Text::getAlignment()
+{
+	return alignment;
+}
+
+QRect Text::getRect()
+{
+	return rect;
+}
 
 void Shapes::Text::draw(const int translateX, const int translateY)
 {

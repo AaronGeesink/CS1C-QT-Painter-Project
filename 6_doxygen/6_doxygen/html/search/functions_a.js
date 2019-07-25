@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['setalignment',['setAlignment',['../class_shapes_1_1_text.html#a1de163b0a17d3363a5581e9bdf30c99b',1,'Shapes::Text']]],
+  ['setbrush',['setBrush',['../class_shapes_1_1_shape.html#a1c47170a6f044047eedd397f38e81580',1,'Shapes::Shape']]],
+  ['setbrushcolor',['setBrushColor',['../class_shapes_1_1_shape.html#a313cb62dfd56ee41b5c2278d80ec9afc',1,'Shapes::Shape']]],
+  ['setbrushstyle',['setBrushStyle',['../class_shapes_1_1_shape.html#a9d1d26c2a0d99e4560145e81782cc461',1,'Shapes::Shape']]],
+  ['setellipse',['setEllipse',['../class_shapes_1_1_ellipse.html#a4720b5fe02b5f920169e6352c5aa7ed4',1,'Shapes::Ellipse']]],
+  ['setfont',['setFont',['../class_shapes_1_1_text.html#a267fcaa3f7d71bb0a23b8f9128b16253',1,'Shapes::Text::setFont(const QString &amp;family, QFont::Weight weight, QFont::Style style, int size, Qt::AlignmentFlag alignment)'],['../class_shapes_1_1_text.html#a8afaaa8e17fdb5b038f063e18868db0b',1,'Shapes::Text::setFont(const QString &amp;family)']]],
+  ['setpen',['setPen',['../class_shapes_1_1_shape.html#ada46ca72c24ad759c476d6e4b6b344d7',1,'Shapes::Shape']]],
+  ['setpencapstyle',['setPenCapStyle',['../class_shapes_1_1_shape.html#aa832edc6c0597c0f9a299957a98ec407',1,'Shapes::Shape']]],
+  ['setpencolor',['setPenColor',['../class_shapes_1_1_shape.html#a5af22342bce235ef7a5832c63dec89e2',1,'Shapes::Shape']]],
+  ['setpenjoinstyle',['setPenJoinStyle',['../class_shapes_1_1_shape.html#a483b665bb69276756809d7efa3e110a9',1,'Shapes::Shape']]],
+  ['setpenstyle',['setPenStyle',['../class_shapes_1_1_shape.html#a2650b1d4a692ea21dc3f17fff0cf2048',1,'Shapes::Shape']]],
+  ['setpenwidth',['setPenWidth',['../class_shapes_1_1_shape.html#a2b4bcf8ac40f393eaf398bb73445ea0d',1,'Shapes::Shape']]],
+  ['setpoint',['setPoint',['../class_shapes_1_1_polyline.html#a05f5cafac631d6d590c12691c8fe0645',1,'Shapes::Polyline::setPoint()'],['../class_shapes_1_1_polygon.html#ad2e32044e1a02641d7acb19234527bab',1,'Shapes::Polygon::setPoint()']]],
+  ['setpoints',['setPoints',['../class_shapes_1_1_line.html#aa83985e1ac2e38a2c651163a5bcb0d87',1,'Shapes::Line']]],
+  ['setpointsize',['setPointSize',['../class_shapes_1_1_text.html#aa400df42d7b81484910b6e8ab0166f01',1,'Shapes::Text']]],
+  ['setrect',['setRect',['../class_shapes_1_1_text.html#a0f9ec1448a419ca6c1c19873dd854eff',1,'Shapes::Text']]],
+  ['setrectangle',['setRectangle',['../class_shapes_1_1_rectangle.html#ab643181d81bdbecc6fe37c783e48a576',1,'Shapes::Rectangle']]],
+  ['setshape',['setShape',['../class_shapes_1_1_shape.html#a610d97f732d655186a3cafa63b6f19fb',1,'Shapes::Shape']]],
+  ['setstring',['setString',['../class_shapes_1_1_text.html#ac606ffc412feec84fdc6fe845c8022c2',1,'Shapes::Text']]],
+  ['setstyle',['setStyle',['../class_shapes_1_1_text.html#a8f0ae070e96f096ef684658da9a66a3d',1,'Shapes::Text']]],
+  ['settext',['setText',['../class_shapes_1_1_text.html#a02b64a1424def58d34404ce3e3265510',1,'Shapes::Text']]],
+  ['setweight',['setWeight',['../class_shapes_1_1_text.html#a2c9cce0bb61fd443570fc53716945ee1',1,'Shapes::Text']]],
+  ['setxy',['setXY',['../class_shapes_1_1_shape.html#a331fb3ee4da3d44457ab8f5456abd60f',1,'Shapes::Shape']]],
+  ['shape',['Shape',['../class_shapes_1_1_shape.html#ae594c0d824e780f2f5b579d74442aba7',1,'Shapes::Shape']]],
+  ['size',['size',['../classproject_1_1vector.html#ac7e1b54fa8a66be408bd42cb60840084',1,'project::vector']]]
+];
