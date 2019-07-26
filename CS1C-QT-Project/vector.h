@@ -1,5 +1,6 @@
 #ifndef VECTOR_H
 #define VECTOR_H
+#include <QDebug>
 
 // vector.h - class specification
 // a vector which approximates the stl vector
